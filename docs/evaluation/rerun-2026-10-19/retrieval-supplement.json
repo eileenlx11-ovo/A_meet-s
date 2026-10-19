@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-19T15:13:24.990Z",
+  "purpose": "Supplementary, hand-authored engineering diagnostic over the same small curated corpus; not a statistically independent holdout set or a representative retrieval benchmark.",
+  "annotationMethod": "These ten new queries and relevance expectations were authored from the seed corpus without inspecting the revised retrieval implementation or its outputs. They use different wording from the original thirty cases but share the same sixteen-record corpus and annotator. Work titles identify stored records, not independently verified quotations, footage, or adaptation relationships.",
+  "limitations": [
+    "10 deliberately chosen diagnostic queries over 16 hand-curated records; no random sampling, independent annotators, or real-user study.",
+    "Exact metadata checks, subjective imagery checks, and negation/multi-condition capability probes are reported separately.",
+    "Local repository only. No HTTP, browser, external-provider availability, relevance of new external data, or paid API calls are evaluated.",
+    "A work-level hit cannot verify an actual film frame, audiovisual content, a clip timestamp, quotation provenance, or an adaptation relationship.",
+    "Exclusion checks use textual seed evidence. Unknown visual content cannot establish the absence of a feature.",
+    "No overall accuracy, semantic quality, latency benchmark, or cross-modal model comparison is claimed."
+  ],
+  "runtime": {
+    "node": "v24.18.0",
+    "sqliteDatabase": ":memory:"
+  },
+  "source": {
+    "gitHead": "dcde811a7df28d48bcc22ee1e51e1c6a04c62938",
+    "worksRepositorySha256": "4b673ae61dd0f7c4ded639ab2566ae909fa27750502a0b33d0be75b6340d159f",
+    "fixturePath": "test\\fixtures\\retrieval-holdout-cases.json",
+    "fixtureSha256": "306cc8290c05b4b10e243bc072bac4b1dce1a12643fcb2e8b6522b9f6e10c580"
+  },
+  "corpus": {
+    "path": "data/seed-works.json",
+    "recordCount": 16,
+    "sha256": "84339990829337d5f7833f82f22748c8c99452a4727984812c5f699fb8315839",
+    "recordsWithVideoLinks": 6,
+    "videoLinks": 6
+  },
+  "summary": {
+    "cases": 10,
+    "passed": 8,
+    "failed": 2,
+    "reviewOnly": 0,
+    "byCategory": {
+      "known_item": {
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "short_imagery": {
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "natural_language": {
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "no_match": {
+        "cases": 2,
+        "passed": 0,
+        "failed": 2,
+        "reviewOnly": 0
+      },
+      "constrained": {
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "reviewOnly": 0
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "supplement-exact-title-anna",
+      "category": "known_item",
+      "query": "安娜·卡列尼娜",
+      "check": "top1",
+      "expectedTitles": [
+        "安娜·卡列尼娜"
+      ],
+      "rationale": "Exact literature and movie title, including its name separator.",
+      "verdict": "pass",
+      "resultCount": 1,
+      "expectedRanks": {
+        "安娜·卡列尼娜": 1
+      },
+      "matchedInTopK": [
+        "安娜·卡列尼娜"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "安娜卡列尼娜",
+        "安娜",
+        "卡"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 14,
+          "literatureTitle": "安娜·卡列尼娜",
+          "movieTitle": "安娜·卡列尼娜"
+        }
+      ]
+    },
+    {
+      "id": "supplement-exact-author-kundera",
+      "category": "known_item",
+      "query": "米兰·昆德拉",
+      "check": "top1",
+      "expectedTitles": [
+        "不能承受的生命之轻"
+      ],
+      "rationale": "Exact literatureAuthor field.",
+      "verdict": "pass",
+      "resultCount": 1,
+      "expectedRanks": {
+        "不能承受的生命之轻": 1
+      },
+      "matchedInTopK": [
+        "不能承受的生命之轻"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "米兰昆德拉",
+        "米兰",
+        "昆"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 11,
+          "literatureTitle": "不能承受的生命之轻",
+          "movieTitle": "布拉格之恋"
+        }
+      ]
+    },
+    {
+      "id": "supplement-exact-movie-grand-budapest",
+      "category": "known_item",
+      "query": "布达佩斯大饭店",
+      "check": "top1",
+      "expectedTitles": [
+        "昨日的世界"
+      ],
+      "rationale": "Exact movie-title lookup should retrieve its stored 昨日的世界 pair. This does not assert a literal adaptation relationship.",
+      "verdict": "pass",
+      "resultCount": 1,
+      "expectedRanks": {
+        "昨日的世界": 1
+      },
+      "matchedInTopK": [
+        "昨日的世界"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "布达佩斯大饭店",
+        "布达佩斯",
+        "饭店"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 6,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-imagery-red-sweater-sky",
+      "category": "short_imagery",
+      "query": "红毛衣 阴郁天空",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": [
+        "挪威的森林"
+      ],
+      "rationale": "The description explicitly combines a red sweater with a gloomy sky; other red garments alone are insufficient.",
+      "verdict": "pass",
+      "resultCount": 2,
+      "expectedRanks": {
+        "挪威的森林": 1
+      },
+      "matchedInTopK": [
+        "挪威的森林"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "红毛衣阴郁天空",
+        "毛衣",
+        "阴郁",
+        "天空"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 7,
+          "literatureTitle": "挪威的森林",
+          "movieTitle": "挪威的森林"
+        },
+        {
+          "rank": 2,
+          "id": 10,
+          "literatureTitle": "海边的曼彻斯特",
+          "movieTitle": "海边的曼彻斯特"
+        }
+      ]
+    },
+    {
+      "id": "supplement-imagery-paper-animation-stars",
+      "category": "short_imagery",
+      "query": "纸艺动画和星空",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": [
+        "小王子"
+      ],
+      "rationale": "The stored description explicitly combines paper-art animation and a starry sky.",
+      "verdict": "pass",
+      "resultCount": 1,
+      "expectedRanks": {
+        "小王子": 1
+      },
+      "matchedInTopK": [
+        "小王子"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "纸艺动画和星空",
+        "动画",
+        "星空"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 8,
+          "literatureTitle": "小王子",
+          "movieTitle": "小王子"
+        }
+      ]
+    },
+    {
+      "id": "supplement-natural-corridor-mirror-memory",
+      "category": "natural_language",
+      "query": "有没有那种走过长廊和镜子、像陷在记忆迷宫里的电影",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "rationale": "Paraphrases the description's mirrors, corridors, and flowing labyrinth of memory. The sentence is an imagery request, not proof of a particular camera movement.",
+      "verdict": "pass",
+      "resultCount": 2,
+      "expectedRanks": {
+        "追忆似水年华": 1
+      },
+      "matchedInTopK": [
+        "追忆似水年华"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "有没有那种走过长廊和镜子像陷在记忆迷宫里的电影",
+        "那种",
+        "走过",
+        "镜子",
+        "记忆",
+        "迷宫",
+        "廊",
+        "像",
+        "陷"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 12,
+          "literatureTitle": "追忆似水年华",
+          "movieTitle": "追忆似水年华"
+        },
+        {
+          "rank": 2,
+          "id": 7,
+          "literatureTitle": "挪威的森林",
+          "movieTitle": "挪威的森林"
+        }
+      ]
+    },
+    {
+      "id": "supplement-natural-artist-island-ideal",
+      "category": "natural_language",
+      "query": "想看一位艺术家离开原来的生活去热带岛屿追求理想",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": [
+        "月亮与六便士"
+      ],
+      "rationale": "Combines the record's artist departure, tropical islands, and pursuit of ideals using different wording.",
+      "verdict": "pass",
+      "resultCount": 3,
+      "expectedRanks": {
+        "月亮与六便士": 1
+      },
+      "matchedInTopK": [
+        "月亮与六便士"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "想看一位艺术家离开原来的生活去热带岛屿追求理想",
+        "一位",
+        "艺术",
+        "离开",
+        "原来",
+        "生活",
+        "热带",
+        "岛屿",
+        "追求",
+        "理想"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 13,
+          "literatureTitle": "月亮与六便士",
+          "movieTitle": "月亮和六便士"
+        },
+        {
+          "rank": 2,
+          "id": 9,
+          "literatureTitle": "霍乱时期的爱情",
+          "movieTitle": "霍乱时期的爱情"
+        },
+        {
+          "rank": 3,
+          "id": 6,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-no-match-green-rangefinder",
+      "category": "no_match",
+      "query": "绿色激光测距仪怎么校准",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "The corpus contains green imagery but no laser rangefinder or calibration instructions. Colour overlap is not enough to answer the request.",
+      "verdict": "fail",
+      "resultCount": 1,
+      "expectedRanks": {},
+      "matchedInTopK": [],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "绿色激光测距仪怎么校准",
+        "绿色",
+        "激光",
+        "怎么",
+        "校准"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 1,
+          "literatureTitle": "赎罪",
+          "movieTitle": "赎罪"
+        }
+      ]
+    },
+    {
+      "id": "supplement-no-match-pink-headphones",
+      "category": "no_match",
+      "query": "粉色无线耳机怎么连接电脑",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "The corpus contains pink imagery but no headphones, wireless pairing, or computer setup.",
+      "verdict": "fail",
+      "resultCount": 1,
+      "expectedRanks": {},
+      "matchedInTopK": [],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "粉色无线耳机怎么连接电脑",
+        "粉色",
+        "无线",
+        "耳机",
+        "怎么",
+        "连接",
+        "电脑"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 6,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-constraint-dawn-without-dusk-regret",
+      "category": "constrained",
+      "query": "找清晨薄雾里的告白，不要黄昏庄园里的遗憾",
+      "check": "topk_any_without_forbidden",
+      "k": 3,
+      "expectedTitles": [
+        "傲慢与偏见"
+      ],
+      "forbiddenTitles": [
+        "长日将尽"
+      ],
+      "rationale": "傲慢与偏见 explicitly supports dawn, mist, and confession. 长日将尽 explicitly supports the excluded dusk-estate-regret combination. This is a limited explicit-exclusion probe; it does not certify general natural-language negation understanding.",
+      "verdict": "pass",
+      "resultCount": 1,
+      "expectedRanks": {
+        "傲慢与偏见": 1
+      },
+      "matchedInTopK": [
+        "傲慢与偏见"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "expandedTerms": [
+        "找清晨薄雾里的告白",
+        "清晨",
+        "薄雾",
+        "告白"
+      ],
+      "results": [
+        {
+          "rank": 1,
+          "id": 5,
+          "literatureTitle": "傲慢与偏见",
+          "movieTitle": "傲慢与偏见"
+        }
+      ]
+    }
+  ],
+  "archiveNote": "Fresh Windows rerun; repeated descriptions, quotations, authors, directors, keywords and video counts omitted from ranked results. Verdicts, ranks, identities and source fingerprints retained."
+}
