@@ -1,6 +1,6 @@
 const express = require('express');
 const { z } = require('zod');
-const { getDb, serializeUser } = require('../db');
+const { getDb, serializePublicUser } = require('../db');
 const { validate } = require('../middleware/validate');
 const { requireAuth } = require('../middleware/auth');
 const { writeLimiter } = require('../middleware/rateLimit');
@@ -14,7 +14,7 @@ const friendRequestSchema = z.object({
 router.get('/friend-requests', requireAuth, (req, res) => {
   const db = getDb();
   const rows = db.prepare(`
-    SELECT fr.id, fr.status, fr.created_at, u.id AS user_id, u.public_id, u.display_name, u.email
+    SELECT fr.id, fr.status, fr.created_at, u.id AS user_id, u.public_id, u.display_name
     FROM friend_requests fr
     JOIN users u ON u.id = fr.requester_id
     WHERE fr.addressee_id = ? AND fr.status = 'pending'
@@ -24,7 +24,7 @@ router.get('/friend-requests', requireAuth, (req, res) => {
     id: row.id,
     status: row.status,
     createdAt: row.created_at,
-    requester: serializeUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name, email: row.email })
+    requester: serializePublicUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name })
   })) });
 });
 
@@ -68,13 +68,13 @@ router.post('/friend-requests/:id/reject', requireAuth, writeLimiter, (req, res)
 router.get('/friends', requireAuth, (req, res) => {
   const db = getDb();
   const rows = db.prepare(`
-    SELECT u.*
+    SELECT u.id, u.public_id, u.display_name
     FROM friend_requests fr
     JOIN users u ON u.id = CASE WHEN fr.requester_id = ? THEN fr.addressee_id ELSE fr.requester_id END
     WHERE fr.status = 'accepted' AND (fr.requester_id = ? OR fr.addressee_id = ?)
     ORDER BY u.display_name
   `).all(req.user.id, req.user.id, req.user.id);
-  res.json({ friends: rows.map(serializeUser) });
+  res.json({ friends: rows.map(serializePublicUser) });
 });
 
 function updateFriendRequest(req, res, status) {

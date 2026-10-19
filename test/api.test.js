@@ -1,6 +1,11 @@
 import request from 'supertest';
-import { createApp } from '../server/app.js';
-import { closeDb } from '../server/db.js';
+import { createRequire } from 'node:module';
+
+// Use the same CommonJS module instance as the routes so cleanup closes the
+// connection the app actually used, including when Vitest transforms imports.
+const require = createRequire(import.meta.url);
+const { createApp } = require('../server/app.js');
+const { closeDb } = require('../server/db.js');
 
 function setupTestEnv() {
   process.env.DB_PATH = ':memory:';

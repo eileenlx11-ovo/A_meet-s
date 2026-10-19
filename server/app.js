@@ -35,7 +35,17 @@ function createApp() {
   app.use('/api', friendsRoutes);
   app.use('/api', sharesRoutes);
 
-  app.use(express.static(rootDir));
+  // Keep the existing page URLs without exposing the database, source, or configuration.
+  const pages = ['index.html', 'search.html', 'work.html', 'login.html', 'profile.html', 'community.html', 'friends.html'];
+  app.get('/', (_req, res) => res.sendFile('index.html', { root: rootDir }));
+  for (const page of pages) {
+    app.get(`/${page}`, (_req, res) => res.sendFile(page, { root: rootDir }));
+  }
+
+  const staticOptions = { dotfiles: 'ignore', index: false, redirect: false };
+  app.use('/css', express.static(path.join(rootDir, 'css'), staticOptions));
+  app.use('/js', express.static(path.join(rootDir, 'js'), staticOptions));
+  app.use('/assets/generated-images', express.static(path.join(rootDir, 'assets', 'generated-images'), staticOptions));
 
   app.use((err, _req, res, _next) => {
     console.error(err);

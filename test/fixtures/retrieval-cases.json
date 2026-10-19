@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Small, hand-authored engineering diagnostic for the curated seed corpus; not a representative retrieval benchmark or measured user satisfaction.",
+  "annotationMethod": "Expected results were written from data/seed-works.json before executing or inspecting retrieval outputs. Work titles identify records, not independently verified quotations or adaptation relationships. Exact metadata checks are separated from subjective imagery judgments and unsupported-language probes.",
+  "corpus": {
+    "path": "data/seed-works.json",
+    "recordCount": 16,
+    "sha256": "84339990829337d5f7833f82f22748c8c99452a4727984812c5f699fb8315839"
+  },
+  "cases": [
+    {
+      "id": "exact-title-atonement",
+      "category": "known_item",
+      "query": "赎罪",
+      "check": "top1",
+      "expectedTitles": ["赎罪"],
+      "rationale": "Matches both the literature title and movie title exactly."
+    },
+    {
+      "id": "exact-literature-duidao",
+      "category": "known_item",
+      "query": "对倒",
+      "check": "top1",
+      "expectedTitles": ["对倒"],
+      "rationale": "Exact literature-title lookup should retrieve its stored 花样年华 pair."
+    },
+    {
+      "id": "exact-movie-hours",
+      "category": "known_item",
+      "query": "时时刻刻",
+      "check": "top1",
+      "expectedTitles": ["到灯塔去"],
+      "rationale": "Exact movie-title lookup should retrieve the stored 到灯塔去 pair."
+    },
+    {
+      "id": "exact-title-love-letter",
+      "category": "known_item",
+      "query": "情书",
+      "check": "top1",
+      "expectedTitles": ["情书"],
+      "rationale": "An exact work title should rank ahead of another record merely containing 情书 as a motif."
+    },
+    {
+      "id": "exact-author-murakami",
+      "category": "known_item",
+      "query": "村上春树",
+      "check": "top1",
+      "expectedTitles": ["挪威的森林"],
+      "rationale": "Exact literatureAuthor field."
+    },
+    {
+      "id": "exact-author-austen",
+      "category": "known_item",
+      "query": "简·奥斯汀",
+      "check": "top1",
+      "expectedTitles": ["傲慢与偏见"],
+      "rationale": "Exact literatureAuthor field, including the name separator."
+    },
+    {
+      "id": "exact-author-ishiguro",
+      "category": "known_item",
+      "query": "石黑一雄",
+      "check": "top1",
+      "expectedTitles": ["长日将尽"],
+      "rationale": "Exact literatureAuthor field."
+    },
+    {
+      "id": "exact-director-wright",
+      "category": "known_item",
+      "query": "乔·赖特",
+      "check": "topk_all",
+      "k": 3,
+      "expectedTitles": ["赎罪", "傲慢与偏见", "安娜·卡列尼娜"],
+      "rationale": "All three seed records have this exact movieDirector. No ordering is prescribed among them."
+    },
+    {
+      "id": "imagery-green-dress",
+      "category": "short_imagery",
+      "query": "绿裙子",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["赎罪"],
+      "rationale": "Explicit green dress in the record and its keywords."
+    },
+    {
+      "id": "imagery-rainy-night",
+      "category": "short_imagery",
+      "query": "雨夜",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["对倒"],
+      "rationale": "Explicit 雨夜 keyword and wet Hong Kong setting. Other mood associations are subjective."
+    },
+    {
+      "id": "imagery-blue-grey-harbour",
+      "category": "short_imagery",
+      "query": "蓝灰色海港",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["海边的曼彻斯特"],
+      "rationale": "Description explicitly contains 冬日海港 and 蓝灰天空."
+    },
+    {
+      "id": "imagery-champagne-ball",
+      "category": "short_imagery",
+      "query": "金色香槟舞会",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["了不起的盖茨比"],
+      "rationale": "The record contains all three motifs; 安娜 contains a ball but no champagne evidence."
+    },
+    {
+      "id": "imagery-tea-cake-memory",
+      "category": "short_imagery",
+      "query": "茶与蛋糕的回忆",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["追忆似水年华"],
+      "rationale": "Tea and cake explicitly evoke a remembered world in the stored text."
+    },
+    {
+      "id": "imagery-pink-symmetric-hotel",
+      "category": "short_imagery",
+      "query": "粉色对称酒店",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["昨日的世界"],
+      "rationale": "Description and keywords explicitly contain pink, symmetry, and hotel."
+    },
+    {
+      "id": "imagery-moonlit-desert-fox",
+      "category": "short_imagery",
+      "query": "月光沙漠狐狸",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["小王子"],
+      "rationale": "All three motifs are explicit in this record."
+    },
+    {
+      "id": "natural-green-dress-estate",
+      "category": "natural_language",
+      "query": "想找英国庄园里穿祖母绿裙子的那个画面",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["赎罪"],
+      "rationale": "Paraphrases the stored British estate and emerald dress description."
+    },
+    {
+      "id": "natural-unsaid-rainy-farewell",
+      "category": "natural_language",
+      "query": "想找雨夜里没有说出口的告别",
+      "check": "review_only",
+      "k": 3,
+      "expectedTitles": ["对倒", "长日将尽"],
+      "rationale": "No seed record explicitly satisfies all details. 对倒 supports rain and restraint; 长日将尽 supports unsaid feelings and farewell but no rain. These are partial candidates only, not an exact answer or an objective pass/fail label."
+    },
+    {
+      "id": "natural-otaru-snow-shout",
+      "category": "natural_language",
+      "query": "她在小樽的雪地里对着雪山呼喊",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["情书"],
+      "rationale": "Near-paraphrase of the stored movie description."
+    },
+    {
+      "id": "natural-unsent-letter-youth",
+      "category": "natural_language",
+      "query": "没有寄出的信，潮湿草地上的青春和死亡",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["挪威的森林"],
+      "rationale": "The quote and keywords directly mention the unsent letter, wet grass, youth, and death."
+    },
+    {
+      "id": "natural-tea-cake-memory",
+      "category": "natural_language",
+      "query": "我想找茶水和小蛋糕让人突然想起往事的文字",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["追忆似水年华"],
+      "rationale": "Paraphrases the stored text using its tea, cake, and past-memory evidence."
+    },
+    {
+      "id": "natural-butler-duty-regret",
+      "category": "natural_language",
+      "query": "一个把一生献给职责却没能说出感情的英国管家",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["长日将尽"],
+      "rationale": "Combines explicit duty, unspoken feelings, and British butler evidence."
+    },
+    {
+      "id": "no-match-quantum-chip",
+      "category": "no_match",
+      "query": "量子计算机超导芯片",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "No seed record discusses quantum computing, superconductors, or chips."
+    },
+    {
+      "id": "no-match-object-detector",
+      "category": "no_match",
+      "query": "如何训练目标检测模型",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "No seed record discusses machine-learning training or object detection."
+    },
+    {
+      "id": "no-match-noodle-recipe",
+      "category": "no_match",
+      "query": "红烧牛肉面做法",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "A single overlapping colour character is not evidence for a noodle recipe."
+    },
+    {
+      "id": "no-match-space-battle",
+      "category": "no_match",
+      "query": "星际飞船的太空战斗",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "小王子 has stars, flying, and a fairy-tale universe, but no spacecraft battle. Broad atmosphere should not stand in for absent requested content."
+    },
+    {
+      "id": "constraint-snow-without-train",
+      "category": "constrained",
+      "query": "有雪但不要火车",
+      "check": "topk_any_without_forbidden",
+      "k": 3,
+      "expectedTitles": ["情书", "昨日的世界"],
+      "forbiddenTitles": ["安娜·卡列尼娜"],
+      "rationale": "情书 explicitly depicts snow. 昨日的世界 is a weaker acceptable candidate because its keywords include 雪山. 安娜 explicitly depicts a snowy train and violates the exclusion. This probes exclusion handling, not just similarity."
+    },
+    {
+      "id": "constraint-estate-dusk-butler",
+      "category": "constrained",
+      "query": "英国庄园里黄昏的管家",
+      "check": "topk_any",
+      "k": 3,
+      "expectedTitles": ["长日将尽"],
+      "rationale": "The record supports estate, dusk, and butler together; another estate alone is insufficient."
+    },
+    {
+      "id": "constraint-snow-emerald-dress",
+      "category": "constrained",
+      "query": "雪地里穿祖母绿裙子",
+      "check": "empty",
+      "expectedTitles": [],
+      "rationale": "No single seed record supports both a snowy setting and an emerald dress. A product may show clearly labelled partial suggestions, but the repository currently has no partial-match contract."
+    },
+    {
+      "id": "constraint-harbour-without-snow",
+      "category": "constrained",
+      "query": "不要雪，只想找海港的悲伤",
+      "check": "topk_any_without_forbidden",
+      "k": 3,
+      "expectedTitles": ["海边的曼彻斯特"],
+      "forbiddenTitles": ["情书", "安娜·卡列尼娜", "昨日的世界"],
+      "rationale": "The harbour and sadness evidence is explicit. Exclude records explicitly tagged or described with snow. This only checks absence of snow evidence in the supplied text, not unseen actual film frames."
+    },
+    {
+      "id": "constraint-tea-without-party",
+      "category": "constrained",
+      "query": "法国的茶与蛋糕，不要香槟派对",
+      "check": "topk_any_without_forbidden",
+      "k": 3,
+      "expectedTitles": ["追忆似水年华"],
+      "forbiddenTitles": ["了不起的盖茨比"],
+      "rationale": "French tea-and-cake memory matches 追忆似水年华; champagne-party evidence explicitly violates the negative clause."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 const express = require('express');
 const { z } = require('zod');
-const { getDb, serializeUser } = require('../db');
+const { getDb, serializePublicUser } = require('../db');
 const { getWork } = require('../services/worksRepository');
 const { validate } = require('../middleware/validate');
 const { requireAuth } = require('../middleware/auth');
@@ -40,7 +40,7 @@ router.post('/shares', requireAuth, writeLimiter, validate(shareSchema), (req, r
 router.get('/shares/inbox', requireAuth, (req, res) => {
   const db = getDb();
   const rows = db.prepare(`
-    SELECT s.id, s.message, s.created_at, u.id AS sender_id, u.public_id, u.display_name, u.email,
+    SELECT s.id, s.message, s.created_at, u.id AS sender_id, u.public_id, u.display_name,
       w.id AS work_id, w.literature_title, w.movie_title, w.description
     FROM shares s
     JOIN users u ON u.id = s.sender_id
@@ -52,7 +52,7 @@ router.get('/shares/inbox', requireAuth, (req, res) => {
     id: row.id,
     message: row.message,
     createdAt: row.created_at,
-    sender: serializeUser({ id: row.sender_id, public_id: row.public_id, display_name: row.display_name, email: row.email }),
+    sender: serializePublicUser({ id: row.sender_id, public_id: row.public_id, display_name: row.display_name }),
     work: {
       id: row.work_id,
       literatureTitle: row.literature_title,

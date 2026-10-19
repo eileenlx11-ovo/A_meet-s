@@ -1,6 +1,6 @@
 const express = require('express');
 const { z } = require('zod');
-const { getDb, serializeUser } = require('../db');
+const { getDb } = require('../db');
 const { requireAuth } = require('../middleware/auth');
 const { validate } = require('../middleware/validate');
 const { writeLimiter } = require('../middleware/rateLimit');
@@ -63,7 +63,8 @@ function getProfile(db, userId) {
 
 function mapProfile(user, profile) {
   return {
-    user: serializeUser(user),
+    // attachUser already converted this account to the API's camelCase fields.
+    user,
     bio: profile.bio || '',
     favoriteBookGenres: profile.favorite_book_genres || '',
     favoriteMovieGenres: profile.favorite_movie_genres || '',
