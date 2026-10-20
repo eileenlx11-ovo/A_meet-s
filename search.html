@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>放映室 | 帧与字</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/evidence.css">
 </head>
 <body>
     <div id="videoModal" class="video-modal">
@@ -27,11 +28,11 @@
 
     <div class="container">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="写下一个意象... (如：绿裙子、旗袍、夏日、雨夜)">
+            <input type="text" id="searchInput" maxlength="200" aria-label="检索文学与电影意象" placeholder="写下一个意象... (如：绿裙子、旗袍、夏日、雨夜)">
             <button class="btn" id="searchButton">找 寻</button>
         </div>
 
-        <div id="resultsContainer" class="results-grid">
+        <div id="resultsContainer" class="results-grid" aria-live="polite">
             <div style="text-align: center; padding: 60px; color: #5a5245; font-style: italic; letter-spacing: 2px;">
                 放映机已就绪，等待您的文字落款...
             </div>
@@ -39,6 +40,7 @@
     </div>
 
     <script src="js/api-client.js"></script>
+    <script src="js/evidence-ui.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/search.js"></script>
 </body>

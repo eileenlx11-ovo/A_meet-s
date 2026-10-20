@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-10-20T05:34:58.582Z",
+  "scope": "Real Chromium + isolated native HTTP harness + production search service + real SQLite. Not full Express/auth; not live providers or video playback.",
+  "runtime": {
+    "node": "v24.18.0",
+    "playwright": "1.56.1",
+    "chromium": "141.0.7390.37"
+  },
+  "cases": [
+    {
+      "name": "rainy-night primary result has field-level witnesses",
+      "passed": true
+    },
+    {
+      "name": "snow/dress has two labelled partial suggestions and no complete result",
+      "passed": true
+    },
+    {
+      "name": "procedure query displays scope explanation, not colour recommendations",
+      "passed": true
+    },
+    {
+      "name": "located English passage never certifies the existing Chinese quote",
+      "passed": true
+    },
+    {
+      "name": "Hours relationship is rendered as editorial, not direct adaptation",
+      "passed": true
+    },
+    {
+      "name": "untrusted source and witness strings remain inert text",
+      "passed": true
+    },
+    {
+      "name": "late search responses do not replace the latest query",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "passed": true
+}

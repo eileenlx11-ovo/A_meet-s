@@ -1,7 +1,8 @@
 const express = require('express');
 const { z } = require('zod');
 const { getDb } = require('../db');
-const { analyzeSearchQuery, searchLocalWorks, getWork, insertExternalWork, getComments } = require('../services/worksRepository');
+const { getWork, getComments } = require('../services/worksRepository');
+const { buildSearchResponse } = require('../services/searchService');
 const { searchBooks } = require('../services/bookProviders');
 const { searchMovies } = require('../services/movieProviders');
 const { validate } = require('../middleware/validate');
@@ -14,37 +15,16 @@ const commentSchema = z.object({
   body: z.string().trim().min(1, '评论不能为空。').max(1000, '评论不能超过 1000 字。')
 });
 
-router.get('/search', async (req, res) => {
-  const query = String(req.query.q || '').trim();
-  const analysis = analyzeSearchQuery(query);
-  if (!analysis.literalQuery) {
-    res.json({ results: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
-    return;
+router.get('/search', async (req, res, next) => {
+  try {
+    const data = await buildSearchResponse(getDb(), req.query.q ?? '', {
+      externalEnabled: process.env.DISABLE_EXTERNAL_SEARCH !== '1', searchBooks, searchMovies
+    });
+    res.json(data);
+  } catch (error) {
+    if (error.status === 400) return res.status(400).json({ error: error.message });
+    next(error);
   }
-
-  const db = getDb();
-  const localResults = searchLocalWorks(db, query);
-  const externalStatus = { books: 'skipped', movies: 'skipped' };
-  const externalResults = [];
-
-  // External providers return unfiltered metadata and echo the query in keywords.
-  // Keep explicit exclusions local until those providers support verified filters.
-  if (localResults.length < 8 && analysis.terms.length > 0 && !analysis.excludedTerms.length && process.env.DISABLE_EXTERNAL_SEARCH !== '1') {
-    const [books, movies] = await Promise.all([searchBooks(query), searchMovies(query)]);
-    externalStatus.books = books.length > 0 ? 'ok' : 'unavailable';
-    externalStatus.movies = movies.length > 0 ? 'ok' : 'unavailable';
-
-    for (const item of [...books, ...movies].slice(0, 10)) {
-      externalResults.push(insertExternalWork(db, item));
-    }
-  }
-
-  const byId = new Map();
-  for (const work of [...localResults, ...externalResults]) {
-    if (work) byId.set(work.id, work);
-  }
-
-  res.json({ results: [...byId.values()], externalStatus });
 });
 
 router.get('/works/:id', (req, res) => {

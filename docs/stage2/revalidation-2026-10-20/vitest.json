@@ -1,0 +1,480 @@
+{
+  "numTotalTestSuites": 5,
+  "numPassedTestSuites": 5,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 42,
+  "numPassedTests": 42,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1792474454145,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " searches seeded works",
+          "status": "passed",
+          "title": "searches seeded works",
+          "duration": 23,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " registers and returns current user",
+          "status": "passed",
+          "title": "registers and returns current user",
+          "duration": 211,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " requires login to comment",
+          "status": "passed",
+          "title": "requires login to comment",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " prevents sharing before friendship is accepted",
+          "status": "passed",
+          "title": "prevents sharing before friendship is accepted",
+          "duration": 582,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " reports image generation unavailable when provider is missing",
+          "status": "passed",
+          "title": "reports image generation unavailable when provider is missing",
+          "duration": 199,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " creates generated image records with a fake provider",
+          "status": "passed",
+          "title": "creates generated image records with a fake provider",
+          "duration": 195,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " updates profile and lists user comments",
+          "status": "passed",
+          "title": "updates profile and lists user comments",
+          "duration": 201,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " creates community and posts discussion",
+          "status": "passed",
+          "title": "creates community and posts discussion",
+          "duration": 198,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1792474455998,
+      "endTime": 1792474457611,
+      "status": "passed",
+      "message": "",
+      "name": "test/api.test.js"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " initial login excludes the empty name from validation and sends credentials",
+          "status": "passed",
+          "title": "initial login excludes the empty name from validation and sends credentials",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " register mode requires a name and returning to login excludes it again",
+          "status": "passed",
+          "title": "register mode requires a name and returning to login excludes it again",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1792474458314,
+      "endTime": 1792474458317,
+      "status": "passed",
+      "message": "",
+      "name": "test/auth-form.test.js"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " serves the existing pages and assets without exposing a real synthetic database or backend files",
+          "status": "passed",
+          "title": "serves the existing pages and assets without exposing a real synthetic database or backend files",
+          "duration": 305,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " preserves the signed-in display name and public ID when loading and saving a profile",
+          "status": "passed",
+          "title": "preserves the signed-in display name and public ID when loading and saving a profile",
+          "duration": 207,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " keeps community identities public while retaining the account owner email in auth/me",
+          "status": "passed",
+          "title": "keeps community identities public while retaining the account owner email in auth/me",
+          "duration": 395,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " uses public identities in friend requests, friend lists, and received shares",
+          "status": "passed",
+          "title": "uses public identities in friend requests, friend lists, and received shares",
+          "duration": 394,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1792474454434,
+      "endTime": 1792474455735,
+      "status": "passed",
+      "message": "",
+      "name": "test/backend-regressions.test.js"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " ranks a complete literatureTitle ahead of a newer thematic keyword match",
+          "status": "passed",
+          "title": "ranks a complete literatureTitle ahead of a newer thematic keyword match",
+          "duration": 5,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " ranks a complete movieTitle ahead of a newer thematic keyword match",
+          "status": "passed",
+          "title": "ranks a complete movieTitle ahead of a newer thematic keyword match",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " ranks a complete literatureAuthor ahead of a newer thematic keyword match",
+          "status": "passed",
+          "title": "ranks a complete literatureAuthor ahead of a newer thematic keyword match",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " ranks a complete movieDirector ahead of a newer thematic keyword match",
+          "status": "passed",
+          "title": "ranks a complete movieDirector ahead of a newer thematic keyword match",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " retains an explicit full-title lookup even when the title is a grammatical word",
+          "status": "passed",
+          "title": "retains an explicit full-title lookup even when the title is a grammatical word",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " retrieves an unquoted literatureTitle that begins with an exclusion command",
+          "status": "passed",
+          "title": "retrieves an unquoted literatureTitle that begins with an exclusion command",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " retrieves an unquoted movieTitle that begins with an exclusion command",
+          "status": "passed",
+          "title": "retrieves an unquoted movieTitle that begins with an exclusion command",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " keeps a pure exclusion empty when no complete metadata field matches it",
+          "status": "passed",
+          "title": "keeps a pure exclusion empty when no complete metadata field matches it",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " preserves keyword entries and gives a complete keyword priority over a substring",
+          "status": "passed",
+          "title": "preserves keyword entries and gives a complete keyword priority over a substring",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " does not create a word by joining separate keyword entries",
+          "status": "passed",
+          "title": "does not create a word by joining separate keyword entries",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " finds literal words in a sentence longer than twelve characters",
+          "status": "passed",
+          "title": "finds literal words in a sentence longer than twelve characters",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " does not turn characters inside unrelated technical or food words into matches",
+          "status": "passed",
+          "title": "does not turn characters inside unrelated technical or food words into matches",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " requires direct evidence before associated moods can influence ranking",
+          "status": "passed",
+          "title": "requires direct evidence before associated moods can influence ranking",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " returns no works for a query without searchable text: \"\"",
+          "status": "passed",
+          "title": "returns no works for a query without searchable text: \"\"",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " returns no works for a query without searchable text: \"   \"",
+          "status": "passed",
+          "title": "returns no works for a query without searchable text: \"   \"",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " returns no works for a query without searchable text: \"！？…——（）\"",
+          "status": "passed",
+          "title": "returns no works for a query without searchable text: \"！？…——（）\"",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " returns no works for a query without searchable text: \"\\t$%🪁+ \"",
+          "status": "passed",
+          "title": "returns no works for a query without searchable text: \"\\t$%🪁+ \"",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " retrieves an older relevant work after more than five hundred newer records",
+          "status": "passed",
+          "title": "retrieves an older relevant work after more than five hundred newer records",
+          "duration": 35,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " supports explicit exclusion clauses without adding their words as positive evidence",
+          "status": "passed",
+          "title": "supports explicit exclusion clauses without adding their words as positive evidence",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " keeps descriptive negative phrases as positive search text",
+          "status": "passed",
+          "title": "keeps descriptive negative phrases as positive search text",
+          "duration": 2,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1792474457770,
+      "endTime": 1792474457836,
+      "status": "passed",
+      "message": "",
+      "name": "test/retrieval.test.js"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " punctuation-only input stays empty without calling external providers",
+          "status": "passed",
+          "title": "punctuation-only input stays empty without calling external providers",
+          "duration": 16,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " explicit exclusions cannot be undone by unfiltered external suggestions",
+          "status": "passed",
+          "title": "explicit exclusions cannot be undone by unfiltered external suggestions",
+          "duration": 10,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " a title beginning with an exclusion command still supports an exact local lookup",
+          "status": "passed",
+          "title": "a title beginning with an exclusion command still supports an exact local lookup",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " an exclusion without positive evidence or an exact title stays empty and local",
+          "status": "passed",
+          "title": "an exclusion without positive evidence or an exact title stays empty and local",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " ordinary positive searches still have the external metadata fallback",
+          "status": "passed",
+          "title": "ordinary positive searches still have the external metadata fallback",
+          "duration": 8,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " multi-condition results keep unsupported partial matches in their own group",
+          "status": "passed",
+          "title": "multi-condition results keep unsupported partial matches in their own group",
+          "duration": 9,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " procedure-intent queries neither recommend by colour nor call external providers",
+          "status": "passed",
+          "title": "procedure-intent queries neither recommend by colour nor call external providers",
+          "duration": 5,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            ""
+          ],
+          "fullName": " search rejects overlong or structured query input explicitly",
+          "status": "passed",
+          "title": "search rejects overlong or structured query input explicitly",
+          "duration": 5,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1792474458086,
+      "endTime": 1792474458152,
+      "status": "passed",
+      "message": "",
+      "name": "test/search-api.test.js"
+    }
+  ]
+}

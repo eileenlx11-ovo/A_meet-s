@@ -1,0 +1,282 @@
+TAP version 13
+# (node:2391) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: snow and emerald dress are separately labelled partial results, not a fabricated complete match
+ok 1 - snow and emerald dress are separately labelled partial results, not a fabricated complete match
+  ---
+  duration_ms: 87.906424
+  type: 'test'
+  ...
+# Subtest: one record can satisfy all lexical conditions without claiming one verified scene
+ok 2 - one record can satisfy all lexical conditions without claiming one verified scene
+  ---
+  duration_ms: 391.710937
+  type: 'test'
+  ...
+# Subtest: a simple rainy-night query remains discoverable
+ok 3 - a simple rainy-night query remains discoverable
+  ---
+  duration_ms: 58.753409
+  type: 'test'
+  ...
+# Subtest: procedure intent abstains without colour recommendations: 绿色激光测距仪怎么校准
+ok 4 - procedure intent abstains without colour recommendations: 绿色激光测距仪怎么校准
+  ---
+  duration_ms: 22.125759
+  type: 'test'
+  ...
+# Subtest: procedure intent abstains without colour recommendations: 粉色无线耳机怎么连接电脑
+ok 5 - procedure intent abstains without colour recommendations: 粉色无线耳机怎么连接电脑
+  ---
+  duration_ms: 34.296355
+  type: 'test'
+  ...
+# Subtest: procedure intent abstains without colour recommendations: 蓝色路由器如何配置
+ok 6 - procedure intent abstains without colour recommendations: 蓝色路由器如何配置
+  ---
+  duration_ms: 26.874952
+  type: 'test'
+  ...
+# Subtest: procedure intent abstains without colour recommendations: 如何训练目标检测模型
+ok 7 - procedure intent abstains without colour recommendations: 如何训练目标检测模型
+  ---
+  duration_ms: 22.813426
+  type: 'test'
+  ...
+# Subtest: procedure intent abstains without colour recommendations: 红烧牛肉面做法
+ok 8 - procedure intent abstains without colour recommendations: 红烧牛肉面做法
+  ---
+  duration_ms: 50.626178
+  type: 'test'
+  ...
+# Subtest: unknown objects in a descriptive query remain unresolved, not silently dropped
+ok 9 - unknown objects in a descriptive query remain unresolved, not silently dropped
+  ---
+  duration_ms: 193.600401
+  type: 'test'
+  ...
+# Subtest: explicit exclusions apply to both result groups
+ok 10 - explicit exclusions apply to both result groups
+  ---
+  duration_ms: 299.870825
+  type: 'test'
+  ...
+# Subtest: descriptive negation does not become an exclusion or a fully understood semantic request
+ok 11 - descriptive negation does not become an exclusion or a fully understood semantic request
+  ---
+  duration_ms: 59.662134
+  type: 'test'
+  ...
+# Subtest: unsupported disjunction is explicitly left for review
+ok 12 - unsupported disjunction is explicitly left for review
+  ---
+  duration_ms: 59.102431
+  type: 'test'
+  ...
+# Subtest: complete metadata overrides command-shaped wording: 不要关闭灯塔
+ok 13 - complete metadata overrides command-shaped wording: 不要关闭灯塔
+  ---
+  duration_ms: 37.478195
+  type: 'test'
+  ...
+# Subtest: complete metadata overrides command-shaped wording: 我们
+ok 14 - complete metadata overrides command-shaped wording: 我们
+  ---
+  duration_ms: 85.433546
+  type: 'test'
+  ...
+# Subtest: complete metadata overrides command-shaped wording: 绿色激光测距仪怎么校准
+ok 15 - complete metadata overrides command-shaped wording: 绿色激光测距仪怎么校准
+  ---
+  duration_ms: 18.741186
+  type: 'test'
+  ...
+# Subtest: duplicate titles do not collapse separate records in the result contract
+ok 16 - duplicate titles do not collapse separate records in the result contract
+  ---
+  duration_ms: 27.019051
+  type: 'test'
+  ...
+# Subtest: all creator-name matches survive
+ok 17 - all creator-name matches survive
+  ---
+  duration_ms: 16.202544
+  type: 'test'
+  ...
+# Subtest: no term is manufactured by joining keyword fields
+ok 18 - no term is manufactured by joining keyword fields
+  ---
+  duration_ms: 10.661125
+  type: 'test'
+  ...
+# Subtest: old records are evaluated before limiting results
+ok 19 - old records are evaluated before limiting results
+  ---
+  duration_ms: 420.134039
+  type: 'test'
+  ...
+# Subtest: normalized UTF-16 offsets map back to the real original field
+ok 20 - normalized UTF-16 offsets map back to the real original field
+  ---
+  duration_ms: 5.604267
+  type: 'test'
+  ...
+# Subtest: every returned witness is an actual span from the stated field
+ok 21 - every returned witness is an actual span from the stated field
+  ---
+  duration_ms: 122.4271
+  type: 'test'
+  ...
+# Subtest: provider query echo is not independently admissible evidence
+ok 22 - provider query echo is not independently admissible evidence
+  ---
+  duration_ms: 22.471282
+  type: 'test'
+  ...
+# Subtest: all sixteen unchanged records receive current source metadata without certifying their quotes
+ok 23 - all sixteen unchanged records receive current source metadata without certifying their quotes
+  ---
+  duration_ms: 11.205074
+  type: 'test'
+  ...
+# Subtest: two reference-version passages are distinguished from existing Chinese quotations
+ok 24 - two reference-version passages are distinguished from existing Chinese quotations
+  ---
+  duration_ms: 35.234599
+  type: 'test'
+  ...
+# Subtest: the Hours pair is editorial, not a false To the Lighthouse adaptation
+ok 25 - the Hours pair is editorial, not a false To the Lighthouse adaptation
+  ---
+  duration_ms: 14.217362
+  type: 'test'
+  ...
+# Subtest: a changed excerpt invalidates the source snapshot
+ok 26 - a changed excerpt invalidates the source snapshot
+  ---
+  duration_ms: 65.782924
+  type: 'test'
+  ...
+# Subtest: a different release cannot inherit another film edition evidence
+ok 27 - a different release cannot inherit another film edition evidence
+  ---
+  duration_ms: 17.551264
+  type: 'test'
+  ...
+# Subtest: catalogue rejects duplicate identities
+ok 28 - catalogue rejects duplicate identities
+  ---
+  duration_ms: 3.585642
+  type: 'test'
+  ...
+# Subtest: catalogue rejects altered source excerpts unless their fingerprints are deliberately updated
+ok 29 - catalogue rejects altered source excerpts unless their fingerprints are deliberately updated
+  ---
+  duration_ms: 6.802285
+  type: 'test'
+  ...
+# Subtest: catalogue rejects active-code URLs
+ok 30 - catalogue rejects active-code URLs
+  ---
+  duration_ms: 3.622529
+  type: 'test'
+  ...
+# Subtest: synthetic segment passes structural validation only
+ok 31 - synthetic segment passes structural validation only
+  ---
+  duration_ms: 3.815481
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"startSeconds":null}
+ok 32 - rejects invalid segment fields: {"startSeconds":null}
+  ---
+  duration_ms: 2.829369
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"startSeconds":-1}
+ok 33 - rejects invalid segment fields: {"startSeconds":-1}
+  ---
+  duration_ms: 2.338534
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"endSeconds":0}
+ok 34 - rejects invalid segment fields: {"endSeconds":0}
+  ---
+  duration_ms: 2.217085
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"endSeconds":11}
+ok 35 - rejects invalid segment fields: {"endSeconds":11}
+  ---
+  duration_ms: 2.198492
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"referenceFrameSeconds":3}
+ok 36 - rejects invalid segment fields: {"referenceFrameSeconds":3}
+  ---
+  duration_ms: 1.846393
+  type: 'test'
+  ...
+# Subtest: rejects invalid segment fields: {"reviewedBy":null}
+ok 37 - rejects invalid segment fields: {"reviewedBy":null}
+  ---
+  duration_ms: 2.372543
+  type: 'test'
+  ...
+# Subtest: unknown media version, rights or timestamp cannot become a verified clip
+ok 38 - unknown media version, rights or timestamp cannot become a verified clip
+  ---
+  duration_ms: 3.604628
+  type: 'test'
+  ...
+# Subtest: oversized or non-string queries fail explicitly
+ok 39 - oversized or non-string queries fail explicitly
+  ---
+  duration_ms: 3.374522
+  type: 'test'
+  ...
+# Subtest: external fallback is never called for exclusions, multi-condition queries or procedures
+ok 40 - external fallback is never called for exclusions, multi-condition queries or procedures
+  ---
+  duration_ms: 68.829286
+  type: 'test'
+  ...
+# Subtest: external results stay separate and echoed keywords are not persisted
+ok 41 - external results stay separate and echoed keywords are not persisted
+  ---
+  duration_ms: 60.067769
+  type: 'test'
+  ...
+# Subtest: a provider rejection does not discard local discovery
+ok 42 - a provider rejection does not discard local discovery
+  ---
+  duration_ms: 12.871318
+  type: 'test'
+  ...
+# Subtest: grammatical joins do not become unsupported content conditions
+ok 43 - grammatical joins do not become unsupported content conditions
+  ---
+  duration_ms: 43.81591
+  type: 'test'
+  ...
+# Subtest: synchronous provider exceptions and malformed items do not break local discovery
+ok 44 - synchronous provider exceptions and malformed items do not break local discovery
+  ---
+  duration_ms: 16.048554
+  type: 'test'
+  ...
+# Subtest: 有没有 is a positive availability question, not descriptive negation
+ok 45 - 有没有 is a positive availability question, not descriptive negation
+  ---
+  duration_ms: 19.564774
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3033.784153

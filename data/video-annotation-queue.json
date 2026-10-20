@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "workKey": "[\"curated\",\"赎罪\",\"伊恩·麦克尤恩\",\"赎罪\",2007,\"乔·赖特\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV1Nu411B7Vk",
+      "sourceUrl": "https://www.bilibili.com/video/BV1Nu411B7Vk",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "workKey": "[\"curated\",\"对倒\",\"刘以鬯\",\"花样年华\",2000,\"王家卫\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV1sL411p7eN",
+      "sourceUrl": "https://www.bilibili.com/video/BV1sL411p7eN",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "workKey": "[\"curated\",\"了不起的盖茨比\",\"F.S. 菲茨杰拉德\",\"了不起的盖茨比\",2013,\"巴兹·鲁赫曼\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV1a34y1S72i",
+      "sourceUrl": "https://www.bilibili.com/video/BV1a34y1S72i",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "workKey": "[\"curated\",\"情书\",\"岩井俊二\",\"情书\",1995,\"岩井俊二\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV17p421m79q",
+      "sourceUrl": "https://www.bilibili.com/video/BV17p421m79q",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "workKey": "[\"curated\",\"傲慢与偏见\",\"简·奥斯汀\",\"傲慢与偏见\",2005,\"乔·赖特\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV1q3411u7oT",
+      "sourceUrl": "https://www.bilibili.com/video/BV1q3411u7oT",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "workKey": "[\"curated\",\"昨日的世界\",\"斯蒂芬·茨威格\",\"布达佩斯大饭店\",2014,\"韦斯·安德森\"]",
+      "provider": "bilibili",
+      "providerVideoId": "BV1bX6pB2EKx",
+      "sourceUrl": "https://www.bilibili.com/video/BV1bX6pB2EKx",
+      "status": "pending",
+      "mediaSha256": null,
+      "durationSeconds": null,
+      "rightsStatus": "unverified",
+      "segments": [],
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+
+> anchor-shadow@1.0.0 test:stage2
+> node --test test/stage2/evidence.node.cjs
+
+✔ snow and emerald dress are separately labelled partial results, not a fabricated complete match (12.7212ms)
+✔ one record can satisfy all lexical conditions without claiming one verified scene (6.9266ms)
+✔ a simple rainy-night query remains discoverable (5.8146ms)
+✔ procedure intent abstains without colour recommendations: 绿色激光测距仪怎么校准 (3.6729ms)
+✔ procedure intent abstains without colour recommendations: 粉色无线耳机怎么连接电脑 (2.9051ms)
+✔ procedure intent abstains without colour recommendations: 蓝色路由器如何配置 (3.6042ms)
+✔ procedure intent abstains without colour recommendations: 如何训练目标检测模型 (2.366ms)
+✔ procedure intent abstains without colour recommendations: 红烧牛肉面做法 (2.9315ms)
+✔ unknown objects in a descriptive query remain unresolved, not silently dropped (5.115ms)
+✔ explicit exclusions apply to both result groups (5.6377ms)
+✔ descriptive negation does not become an exclusion or a fully understood semantic request (5.4531ms)
+✔ unsupported disjunction is explicitly left for review (6.2033ms)
+✔ complete metadata overrides command-shaped wording: 不要关闭灯塔 (3.856ms)
+✔ complete metadata overrides command-shaped wording: 我们 (2.5392ms)
+✔ complete metadata overrides command-shaped wording: 绿色激光测距仪怎么校准 (3.4593ms)
+✔ duplicate titles do not collapse separate records in the result contract (2.8101ms)
+✔ all creator-name matches survive (3.5958ms)
+✔ no term is manufactured by joining keyword fields (1.6566ms)
+✔ old records are evaluated before limiting results (57.3116ms)
+✔ normalized UTF-16 offsets map back to the real original field (1.2863ms)
+✔ every returned witness is an actual span from the stated field (15.4759ms)
+✔ provider query echo is not independently admissible evidence (6.6113ms)
+✔ all sixteen unchanged records receive current source metadata without certifying their quotes (2.0711ms)
+✔ two reference-version passages are distinguished from existing Chinese quotations (3.6221ms)
+✔ the Hours pair is editorial, not a false To the Lighthouse adaptation (4.2591ms)
+✔ a changed excerpt invalidates the source snapshot (2.3923ms)
+✔ a different release cannot inherit another film edition evidence (2.6896ms)
+✔ catalogue rejects duplicate identities (1.2738ms)
+✔ catalogue rejects altered source excerpts unless their fingerprints are deliberately updated (1.0513ms)
+✔ catalogue rejects active-code URLs (1.0904ms)
+✔ synthetic segment passes structural validation only (1.0015ms)
+✔ rejects invalid segment fields: {"startSeconds":null} (1.0927ms)
+✔ rejects invalid segment fields: {"startSeconds":-1} (1.0429ms)
+✔ rejects invalid segment fields: {"endSeconds":0} (0.9282ms)
+✔ rejects invalid segment fields: {"endSeconds":11} (1.3459ms)
+✔ rejects invalid segment fields: {"referenceFrameSeconds":3} (1.4378ms)
+✔ rejects invalid segment fields: {"reviewedBy":null} (2.5626ms)
+✔ unknown media version, rights or timestamp cannot become a verified clip (0.9879ms)
+✔ oversized or non-string queries fail explicitly (1.3147ms)
+✔ external fallback is never called for exclusions, multi-condition queries or procedures (11.4875ms)
+✔ external results stay separate and echoed keywords are not persisted (9.0818ms)
+✔ aggregated book providers retain both sources within the total external result limit (5.7889ms)
+✔ a provider rejection does not discard local discovery (5.5349ms)
+✔ grammatical joins do not become unsupported content conditions (9.6908ms)
+✔ synchronous provider exceptions and malformed items do not break local discovery (4.6951ms)
+✔ 有没有 is a positive availability question, not descriptive negation (5.6132ms)
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 327.3972

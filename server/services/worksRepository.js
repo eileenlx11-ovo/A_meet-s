@@ -1,4 +1,6 @@
 const { safeVideo } = require('./videoProviders');
+const { buildQueryPlan, explainWork } = require('./queryEvidence');
+const { attachContentEvidence } = require('./contentEvidence');
 
 // These are loose associations, not interchangeable meanings. They may only
 // reorder records that already have literal evidence for the user's query.
@@ -103,7 +105,7 @@ function hydrateWork(db, row) {
   if (!work) return null;
   work.keywords = getKeywords(db, work.id);
   work.videos = getVideos(db, work.id);
-  return work;
+  return attachContentEvidence(work);
 }
 
 function searchLocalWorks(db, query) {
@@ -130,6 +132,28 @@ function searchLocalWorks(db, query) {
     ...item.work,
     videos: videosByWork.get(item.work.id) || []
   }));
+}
+
+// Stage-2 public contract. The legacy searchLocalWorks above remains a
+// candidate-retrieval baseline; clients must use this function to distinguish
+// all parsed text conditions from incomplete or unparsed suggestions.
+function searchLocalWorksDetailed(db, query) {
+  const analysis = analyzeSearchQuery(query);
+  const rows = db.prepare('SELECT * FROM works ORDER BY id DESC').all();
+  const keywords = getKeywordsForWorks(db);
+  const works = rows.map((row) => ({ ...mapWork(row), keywords: keywords.get(row.id) || [] }));
+  const plan = buildQueryPlan(query, analysis, works);
+  const ranked = works.map((work) => ({ work, match: explainWork(work, plan), ...scoreWork(work, analysis) }))
+    .filter((item) => item.match)
+    .sort((a, b) => b.metadataRank - a.metadataRank || b.score - a.score || b.work.id - a.work.id);
+  const full = ranked.filter((item) => item.match.type !== 'partial');
+  const partial = ranked.filter((item) => item.match.type === 'partial');
+  const selected = [...full.slice(0, 30), ...partial.slice(0, 12)];
+  const videos = getVideosForWorks(db, selected.map((item) => item.work.id));
+  const mapResult = (item) => attachContentEvidence({ ...item.work, match: item.match, videos: videos.get(item.work.id) || [] });
+  return { contractVersion: 2, queryPlan: plan,
+    counts: { allTextConditions: full.length, partial: partial.length },
+    results: full.slice(0, 30).map(mapResult), partialResults: partial.slice(0, 12).map(mapResult) };
 }
 
 function expandSearchTerms(query) {
@@ -305,4 +329,4 @@ function getComments(db, workId) {
   }));
 }
 
-module.exports = { searchLocalWorks, getWork, insertExternalWork, getComments, hydrateWork, expandSearchTerms, analyzeSearchQuery };
+module.exports = { searchLocalWorksDetailed, searchLocalWorks, getWork, insertExternalWork, getComments, hydrateWork, expandSearchTerms, analyzeSearchQuery };
