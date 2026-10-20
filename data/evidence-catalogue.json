@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-19",
+  "policy": "Located reference-version passages do not verify existing Chinese quotations. Pair-level adaptation does not prove scene alignment. No real clip has been annotated in this stage.",
+  "entries": [
+    {
+      "workKey": "[\"curated\",\"赎罪\",\"伊恩·麦克尤恩\",\"赎罪\",2007,\"乔·赖特\"]",
+      "snapshotSha256": "ca38aa3459f3f7f6c0584b8f50063a177055cf45ee853ac94940438c5e4d4b08",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"对倒\",\"刘以鬯\",\"花样年华\",2000,\"王家卫\"]",
+      "snapshotSha256": "74ce7fece83e50a7d57d04aebdfa306ce6273703863945969c2b9eb8442ad55c",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"了不起的盖茨比\",\"F.S. 菲茨杰拉德\",\"了不起的盖茨比\",2013,\"巴兹·鲁赫曼\"]",
+      "snapshotSha256": "42ddd90a7211b459b17e997a716589519c1fcbbdbd5b1ff0de8de17c0be3adfe",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"情书\",\"岩井俊二\",\"情书\",1995,\"岩井俊二\"]",
+      "snapshotSha256": "05eb90477751ba811581a2577bc5030824bf456be1ea5c432ae1dedab7f82c20",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"傲慢与偏见\",\"简·奥斯汀\",\"傲慢与偏见\",2005,\"乔·赖特\"]",
+      "snapshotSha256": "b7f0c1adeddea98e2061ff271acad09375ed5d1f00b8cee6bf705a7227986f4e",
+      "relationship": {
+        "type": "adaptation",
+        "status": "source_verified",
+        "label": "作品级改编关系已核验；具体段落与镜头对应未核验",
+        "sources": [
+          {
+            "url": "https://www.focusfeatures.com/pride_and_prejudice",
+            "title": "Focus Features: Pride & Prejudice (2005), About the Film",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "locatedPassages": [
+        {
+          "id": "austen-ch58-darcy",
+          "status": "source_located",
+          "source": {
+            "url": "https://www.gutenberg.org/files/1342/1342-h/1342-h.htm",
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "language": "en",
+            "edition": "Project Gutenberg eBook 1342；George Allen / Hugh Thomson illustrated edition displayed on the source page",
+            "translator": null,
+            "locator": "Chapter LVIII (58), paragraph beginning Elizabeth was too much embarrassed to say a word",
+            "page": null
+          },
+          "sourceExcerpt": "My affections and wishes are unchanged; but one word from you will silence me on this subject for ever.",
+          "summaryZh": "达西表示心意没有改变，同时愿意尊重对方的拒绝。",
+          "summaryKind": "editorial_summary_not_published_translation",
+          "checkedAt": "2026-10-19",
+          "checkedBy": "ChatGPT source lookup; human review pending",
+          "limitations": "已定位英文原文。不能据此认证站内中文摘句的译者、版本或逐字准确性，也未定位电影镜头。",
+          "excerptSha256": "391c4ef3eb9b9e7872fea69aaf413074a428b58e6f92719e541f3523c0c500ca"
+        }
+      ]
+    },
+    {
+      "workKey": "[\"curated\",\"昨日的世界\",\"斯蒂芬·茨威格\",\"布达佩斯大饭店\",2014,\"韦斯·安德森\"]",
+      "snapshotSha256": "2a7c2f74b5d65fd4a505b6988b76044f1dd8b884adfad227ead784f6917bab80",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"挪威的森林\",\"村上春树\",\"挪威的森林\",2010,\"陈英雄\"]",
+      "snapshotSha256": "9fabcb0485cf82d871c5a03b12c0e6cda748dfe80836727cb45ae2f45b4a1f35",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"小王子\",\"圣埃克苏佩里\",\"小王子\",2015,\"马克·奥斯本\"]",
+      "snapshotSha256": "797bd964d417c9d584bdd184a7acb72ccf3183edc51bc8f53c1f061593fc04c5",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"霍乱时期的爱情\",\"加西亚·马尔克斯\",\"霍乱时期的爱情\",2007,\"迈克·内威尔\"]",
+      "snapshotSha256": "d8558f4b84d165d476d1d876b2d719665694287d4f6acf6e2e7be9b697c82d08",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"海边的曼彻斯特\",\"原创电影剧本\",\"海边的曼彻斯特\",2016,\"肯尼斯·洛纳根\"]",
+      "snapshotSha256": "8709796fab8ed6adbe59edc8a35e85b66c73ff39616831aa9aa80ebfb4c6e700",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"不能承受的生命之轻\",\"米兰·昆德拉\",\"布拉格之恋\",1988,\"菲利普·考夫曼\"]",
+      "snapshotSha256": "c62d18cec4d9ad7e99a1b484d05702dbf92f4700207c02d35975aac0bafac82d",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"追忆似水年华\",\"马塞尔·普鲁斯特\",\"追忆似水年华\",1999,\"拉乌·鲁兹\"]",
+      "snapshotSha256": "bd45f2a4ca162df2197b90c3408a2a487d1ba39a3200d27c5eb6c9b095ef670e",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [
+        {
+          "id": "proust-overture-madeleine",
+          "status": "source_located",
+          "source": {
+            "url": "https://www.gutenberg.org/files/7178/7178-h/7178-h.htm",
+            "title": "Swann’s Way / Remembrance of Things Past, Volume One",
+            "author": "Marcel Proust",
+            "language": "en",
+            "edition": "Henry Holt and Company, New York, 1922；Project Gutenberg eBook 7178",
+            "translator": "C. K. Scott Moncrieff",
+            "locator": "OVERTURE, paragraph beginning Many years had elapsed during which nothing of Combray",
+            "page": null
+          },
+          "sourceExcerpt": "I was conscious that it was connected with the taste of tea and cake",
+          "summaryZh": "茶与小蛋糕的滋味唤起强烈感受，叙述者试图追寻这一感受的来源。",
+          "summaryKind": "editorial_summary_not_published_translation",
+          "checkedAt": "2026-10-19",
+          "checkedBy": "ChatGPT source lookup; human review pending",
+          "limitations": "定位的是第一卷英文译本的段落，不是已核验中文译句，也不证明该段落出现在1999年电影中。",
+          "excerptSha256": "67de1c7e1e2b1e6fbc388ca0499cfd229b8a78957bd11e01401324817945562a"
+        }
+      ]
+    },
+    {
+      "workKey": "[\"curated\",\"月亮与六便士\",\"毛姆\",\"月亮和六便士\",1942,\"阿尔伯特·勒文\"]",
+      "snapshotSha256": "9634f825d12a6f3b364c1e927443fcdab384245d25ccff02b2d2aadc9d68962c",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"安娜·卡列尼娜\",\"列夫·托尔斯泰\",\"安娜·卡列尼娜\",2012,\"乔·赖特\"]",
+      "snapshotSha256": "d37425c2ecb72644a1f4933937fce722faf3e542fbf0a44200763cdb1e90a716",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"到灯塔去\",\"弗吉尼亚·伍尔夫\",\"时时刻刻\",2002,\"史蒂芬·戴德利\"]",
+      "snapshotSha256": "34c5d8052a3b5c49457900482f3fe38d28ba98261b121ee0dbec669c55decf0c",
+      "relationship": {
+        "type": "editorial_theme",
+        "status": "editorial",
+        "label": "编辑性主题关联，不是《到灯塔去》的直接改编",
+        "note": "AFI说明电影改编自Michael Cunningham的小说。当前配对仅保留为伍尔夫相关主题的编辑性联想，不视为同段落改编。",
+        "sources": [
+          {
+            "url": "https://silver.afi.com/movies/detail/0100004618/",
+            "title": "AFI Silver: THE HOURS, programme synopsis and credits",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "locatedPassages": []
+    },
+    {
+      "workKey": "[\"curated\",\"长日将尽\",\"石黑一雄\",\"告别有情天\",1993,\"詹姆斯·伊沃里\"]",
+      "snapshotSha256": "a1984edcada3e776046d779b1c9a03e3d358d75f5129430db8a7743058b71baf",
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": []
+    }
+  ]
+}

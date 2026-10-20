@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-19T15:58:00.691Z",
+  "note": "Structural audit, not an automatic fact checker or a copyright authorization. No local user database is opened.",
+  "counts": {
+    "seedRecords": 16,
+    "currentSnapshots": 16,
+    "unverifiedChineseQuotes": 16,
+    "locatedReferencePassages": 2,
+    "sourceVerifiedAdaptationPairs": 1,
+    "editorialThemePairs": 1,
+    "unverifiedPairs": 14,
+    "pendingVideos": 6,
+    "structurallyReviewedSegments": 0
+  },
+  "entries": [
+    {
+      "title": "赎罪",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV1Nu411B7Vk",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "对倒",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV1sL411p7eN",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "了不起的盖茨比",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV1a34y1S72i",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "情书",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV17p421m79q",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "傲慢与偏见",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "adaptation",
+        "status": "source_verified",
+        "label": "作品级改编关系已核验；具体段落与镜头对应未核验",
+        "sources": [
+          {
+            "url": "https://www.focusfeatures.com/pride_and_prejudice",
+            "title": "Focus Features: Pride & Prejudice (2005), About the Film",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "locatedPassages": [
+        {
+          "id": "austen-ch58-darcy",
+          "status": "source_located",
+          "source": {
+            "url": "https://www.gutenberg.org/files/1342/1342-h/1342-h.htm",
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "language": "en",
+            "edition": "Project Gutenberg eBook 1342；George Allen / Hugh Thomson illustrated edition displayed on the source page",
+            "translator": null,
+            "locator": "Chapter LVIII (58), paragraph beginning Elizabeth was too much embarrassed to say a word",
+            "page": null
+          },
+          "sourceExcerpt": "My affections and wishes are unchanged; but one word from you will silence me on this subject for ever.",
+          "summaryZh": "达西表示心意没有改变，同时愿意尊重对方的拒绝。",
+          "summaryKind": "editorial_summary_not_published_translation",
+          "checkedAt": "2026-10-19",
+          "checkedBy": "ChatGPT source lookup; human review pending",
+          "limitations": "已定位英文原文。不能据此认证站内中文摘句的译者、版本或逐字准确性，也未定位电影镜头。",
+          "excerptSha256": "391c4ef3eb9b9e7872fea69aaf413074a428b58e6f92719e541f3523c0c500ca"
+        }
+      ],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV1q3411u7oT",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "昨日的世界",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [
+        {
+          "provider": "bilibili",
+          "providerVideoId": "BV1bX6pB2EKx",
+          "status": "unverified",
+          "label": "仅有视频链接，未核验具体镜头",
+          "segments": []
+        }
+      ],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "挪威的森林",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "小王子",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "霍乱时期的爱情",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "海边的曼彻斯特",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "不能承受的生命之轻",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "追忆似水年华",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [
+        {
+          "id": "proust-overture-madeleine",
+          "status": "source_located",
+          "source": {
+            "url": "https://www.gutenberg.org/files/7178/7178-h/7178-h.htm",
+            "title": "Swann’s Way / Remembrance of Things Past, Volume One",
+            "author": "Marcel Proust",
+            "language": "en",
+            "edition": "Henry Holt and Company, New York, 1922；Project Gutenberg eBook 7178",
+            "translator": "C. K. Scott Moncrieff",
+            "locator": "OVERTURE, paragraph beginning Many years had elapsed during which nothing of Combray",
+            "page": null
+          },
+          "sourceExcerpt": "I was conscious that it was connected with the taste of tea and cake",
+          "summaryZh": "茶与小蛋糕的滋味唤起强烈感受，叙述者试图追寻这一感受的来源。",
+          "summaryKind": "editorial_summary_not_published_translation",
+          "checkedAt": "2026-10-19",
+          "checkedBy": "ChatGPT source lookup; human review pending",
+          "limitations": "定位的是第一卷英文译本的段落，不是已核验中文译句，也不证明该段落出现在1999年电影中。",
+          "excerptSha256": "67de1c7e1e2b1e6fbc388ca0499cfd229b8a78957bd11e01401324817945562a"
+        }
+      ],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "月亮与六便士",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "安娜·卡列尼娜",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "到灯塔去",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "editorial_theme",
+        "status": "editorial",
+        "label": "编辑性主题关联，不是《到灯塔去》的直接改编",
+        "note": "AFI说明电影改编自Michael Cunningham的小说。当前配对仅保留为伍尔夫相关主题的编辑性联想，不视为同段落改编。",
+        "sources": [
+          {
+            "url": "https://silver.afi.com/movies/detail/0100004618/",
+            "title": "AFI Silver: THE HOURS, programme synopsis and credits",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    },
+    {
+      "title": "长日将尽",
+      "catalogueStatus": "current",
+      "quote": {
+        "status": "unverified",
+        "label": "站内摘句 · 原文与中文版本待核验",
+        "note": "没有中文译本、页码或段落核查记录；请勿作为作者原话引用。"
+      },
+      "relationship": {
+        "type": "unverified_pair",
+        "status": "unverified",
+        "label": "配对关系待核验",
+        "sources": []
+      },
+      "locatedPassages": [],
+      "videos": [],
+      "sameSceneVerified": false
+    }
+  ],
+  "videos": [
+    {
+      "providerVideoId": "BV1Nu411B7Vk",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "providerVideoId": "BV1sL411p7eN",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "providerVideoId": "BV1a34y1S72i",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "providerVideoId": "BV17p421m79q",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "providerVideoId": "BV1q3411u7oT",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    },
+    {
+      "providerVideoId": "BV1bX6pB2EKx",
+      "status": "pending",
+      "reviewedSegments": 0,
+      "blockingReason": "尚未获取具体可用媒体版本，未观看及核验镜头时间；不能用占位时间戳替代。"
+    }
+  ],
+  "readyForVerifiedQuotationUse": false,
+  "readyForVisualEvaluation": false
+}

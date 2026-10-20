@@ -38,7 +38,7 @@ afterEach(() => {
 test('punctuation-only input stays empty without calling external providers', async () => {
   const response = await request(createApp()).get('/api/search').query({ q: '，。！？《》' });
   expect(response.status).toBe(200);
-  expect(response.body).toEqual({ results: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
+  expect(response.body).toMatchObject({ contractVersion: 2, results: [], partialResults: [], externalResults: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
   expect(externalRequests).toEqual([]);
 });
 
@@ -68,7 +68,7 @@ test('a title beginning with an exclusion command still supports an exact local 
 test('an exclusion without positive evidence or an exact title stays empty and local', async () => {
   const response = await request(createApp()).get('/api/search').query({ q: '不要雪' });
   expect(response.status).toBe(200);
-  expect(response.body).toEqual({ results: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
+  expect(response.body).toMatchObject({ contractVersion: 2, results: [], partialResults: [], externalResults: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
   expect(externalRequests).toEqual([]);
 });
 
@@ -79,4 +79,31 @@ test('ordinary positive searches still have the external metadata fallback', asy
   expect(externalRequests).toHaveLength(1);
   expect(externalRequests[0]).toContain('openlibrary.org/search.json');
   expect(response.body.externalStatus.books).toBe('unavailable');
+});
+
+// Stage 2 HTTP contract checks. These require the real application dependencies.
+test('multi-condition results keep unsupported partial matches in their own group', async () => {
+  process.env.DISABLE_EXTERNAL_SEARCH = '1';
+  const response = await request(createApp()).get('/api/search').query({ q: '雪地里穿祖母绿裙子' });
+  expect(response.status).toBe(200);
+  expect(response.body.contractVersion).toBe(2);
+  expect(response.body.results).toEqual([]);
+  expect(response.body.partialResults).toHaveLength(2);
+  expect(response.body.partialResults.every(w => w.match.type === 'partial' && !w.match.sameSceneVerified)).toBe(true);
+  expect(externalRequests).toEqual([]);
+});
+
+test('procedure-intent queries neither recommend by colour nor call external providers', async () => {
+  const response = await request(createApp()).get('/api/search').query({ q: '绿色激光测距仪怎么校准' });
+  expect(response.status).toBe(200);
+  expect(response.body).toMatchObject({ results: [], partialResults: [], externalResults: [], queryPlan: { intent: 'outside_scope' } });
+  expect(externalRequests).toEqual([]);
+});
+
+test('search rejects overlong or structured query input explicitly', async () => {
+  for (const query of [{ q: '雪'.repeat(201) }, { q: { value: '雨夜' } }]) {
+    const response = await request(createApp()).get('/api/search').query(query);
+    expect(response.status).toBe(400);
+  }
+  expect(externalRequests).toEqual([]);
 });

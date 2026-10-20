@@ -1,0 +1,3942 @@
+{
+  "schemaVersion": 1,
+  "basePr": 1,
+  "baseCommit": "688b104c6bcebddcf27f59b603e0441da1ff144c",
+  "evaluatedAt": "2026-10-19T16:01:27.282Z",
+  "runtime": {
+    "node": "v22.16.0",
+    "icu": "77.1"
+  },
+  "corpusSha256": "84339990829337d5f7833f82f22748c8c99452a4727984812c5f699fb8315839",
+  "fixtures": [
+    {
+      "name": "retrieval-cases.json",
+      "sha256": "a48d7a3ea9060bba929972058340e755931582ee2d0311c42e39a8798996a27b"
+    },
+    {
+      "name": "retrieval-holdout-cases.json",
+      "sha256": "306cc8290c05b4b10e243bc072bac4b1dce1a12643fcb2e8b6522b9f6e10c580"
+    }
+  ],
+  "implementationHashes": {
+    "server/services/queryEvidence.js": "3a1539978de2d015b192b65f9c4023a7993552db29fa0a166b0fc16bde140d72",
+    "server/services/worksRepository.js": "8e535dab0d9fd944002fd46a7b43adc8a07de74856aa8c46a6cfd59f965ce84c",
+    "server/services/contentEvidence.js": "a3c437f11009076125c350a6c493be4fd82fd946746fa10f6129f3a39d1dbd1a"
+  },
+  "note": "The same old relevance checks are separately applied to primary-only and primary+partial lists. A partial suggestion is not a complete answer. The old snow/dress empty check intentionally passes primary-only but fails including-partial. Raw counts must not be presented as one comparable accuracy metric. All relevance labels come from the legacy unverified seed text.",
+  "summary": {
+    "legacyCandidates": {
+      "pass": 36,
+      "fail": 3,
+      "review": 1
+    },
+    "primaryOnly": {
+      "pass": 33,
+      "fail": 6,
+      "review": 1
+    },
+    "includingPartial": {
+      "pass": 38,
+      "fail": 1,
+      "review": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "exact-title-atonement",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "赎罪",
+      "check": "top1",
+      "expectedTitles": [
+        "赎罪"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "赎罪",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "赎罪"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "赎罪"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureTitle",
+                "fieldLabel": "书名",
+                "term": "赎罪",
+                "start": 0,
+                "end": 2,
+                "matchedText": "赎罪",
+                "excerpt": "赎罪"
+              },
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "赎罪",
+                "start": 0,
+                "end": 2,
+                "matchedText": "赎罪",
+                "excerpt": "赎罪"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-literature-duidao",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "对倒",
+      "check": "top1",
+      "expectedTitles": [
+        "对倒"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "对倒",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "对倒"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "对倒",
+          "movieTitle": "花样年华",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "对倒"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureTitle",
+                "fieldLabel": "书名",
+                "term": "对倒",
+                "start": 0,
+                "end": 2,
+                "matchedText": "对倒",
+                "excerpt": "对倒"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-movie-hours",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "时时刻刻",
+      "check": "top1",
+      "expectedTitles": [
+        "到灯塔去"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "时时刻刻",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "时时刻刻"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "到灯塔去",
+          "movieTitle": "时时刻刻",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "时时刻刻"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "时时刻刻",
+                "start": 0,
+                "end": 4,
+                "matchedText": "时时刻刻",
+                "excerpt": "时时刻刻"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-title-love-letter",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "情书",
+      "check": "top1",
+      "expectedTitles": [
+        "情书"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "情书",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "情书"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "情书"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureTitle",
+                "fieldLabel": "书名",
+                "term": "情书",
+                "start": 0,
+                "end": 2,
+                "matchedText": "情书",
+                "excerpt": "情书"
+              },
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "情书",
+                "start": 0,
+                "end": 2,
+                "matchedText": "情书",
+                "excerpt": "情书"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-author-murakami",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "村上春树",
+      "check": "top1",
+      "expectedTitles": [
+        "挪威的森林"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "村上春树",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "村上春树"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "挪威的森林",
+          "movieTitle": "挪威的森林",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "村上春树"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureAuthor",
+                "fieldLabel": "作者",
+                "term": "村上春树",
+                "start": 0,
+                "end": 4,
+                "matchedText": "村上春树",
+                "excerpt": "村上春树"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-author-austen",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "简·奥斯汀",
+      "check": "top1",
+      "expectedTitles": [
+        "傲慢与偏见"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "简·奥斯汀",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "简奥斯汀"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "傲慢与偏见",
+          "movieTitle": "傲慢与偏见",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "简奥斯汀"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureAuthor",
+                "fieldLabel": "作者",
+                "term": "简奥斯汀",
+                "start": 0,
+                "end": 5,
+                "matchedText": "简·奥斯汀",
+                "excerpt": "简·奥斯汀"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-author-ishiguro",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "石黑一雄",
+      "check": "top1",
+      "expectedTitles": [
+        "长日将尽"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "石黑一雄",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "石黑一雄"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "长日将尽",
+          "movieTitle": "告别有情天",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "石黑一雄"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureAuthor",
+                "fieldLabel": "作者",
+                "term": "石黑一雄",
+                "start": 0,
+                "end": 4,
+                "matchedText": "石黑一雄",
+                "excerpt": "石黑一雄"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "exact-director-wright",
+      "fixture": "retrieval-cases.json",
+      "category": "known_item",
+      "query": "乔·赖特",
+      "check": "topk_all",
+      "expectedTitles": [
+        "赎罪",
+        "傲慢与偏见",
+        "安娜·卡列尼娜"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "乔·赖特",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "乔赖特"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "安娜·卡列尼娜",
+          "movieTitle": "安娜·卡列尼娜",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "乔赖特"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "movieDirector",
+                "fieldLabel": "导演",
+                "term": "乔赖特",
+                "start": 0,
+                "end": 4,
+                "matchedText": "乔·赖特",
+                "excerpt": "乔·赖特"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "傲慢与偏见",
+          "movieTitle": "傲慢与偏见",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "乔赖特"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "movieDirector",
+                "fieldLabel": "导演",
+                "term": "乔赖特",
+                "start": 0,
+                "end": 4,
+                "matchedText": "乔·赖特",
+                "excerpt": "乔·赖特"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "乔赖特"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "movieDirector",
+                "fieldLabel": "导演",
+                "term": "乔赖特",
+                "start": 0,
+                "end": 4,
+                "matchedText": "乔·赖特",
+                "excerpt": "乔·赖特"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "imagery-green-dress",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "绿裙子",
+      "check": "topk_any",
+      "expectedTitles": [
+        "赎罪"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "绿裙子",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "绿裙子"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "绿裙子"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "绿裙子",
+                "start": 0,
+                "end": 3,
+                "matchedText": "绿裙子",
+                "excerpt": "绿裙子"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "imagery-rainy-night",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "雨夜",
+      "check": "topk_any",
+      "expectedTitles": [
+        "对倒"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "雨夜",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "雨夜"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "对倒",
+          "movieTitle": "花样年华",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "雨夜"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "雨夜",
+                "start": 0,
+                "end": 2,
+                "matchedText": "雨夜",
+                "excerpt": "雨夜"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "imagery-blue-grey-harbour",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "蓝灰色海港",
+      "check": "topk_any",
+      "expectedTitles": [
+        "海边的曼彻斯特"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "蓝灰色海港",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "蓝灰",
+          "海港"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "海边的曼彻斯特",
+          "movieTitle": "海边的曼彻斯特",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "蓝灰",
+              "海港"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "蓝灰",
+                "start": 15,
+                "end": 17,
+                "matchedText": "蓝灰",
+                "excerpt": "海风把所有话语吹得很轻，港口的蓝灰色天空下，一个人带着无法修补的过去，在寒冷小镇里沉默行走。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "蓝灰",
+                "start": 5,
+                "end": 7,
+                "matchedText": "蓝灰",
+                "excerpt": "冬日海港、蓝灰天空、空旷街道和沉默的人物构成冷冽写实的悲伤氛围。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "蓝灰",
+                "start": 0,
+                "end": 2,
+                "matchedText": "蓝灰",
+                "excerpt": "蓝灰"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "海港",
+                "start": 2,
+                "end": 4,
+                "matchedText": "海港",
+                "excerpt": "冬日海港、蓝灰天空、空旷街道和沉默的人物构成冷冽写实的悲伤氛围。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "imagery-champagne-ball",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "金色香槟舞会",
+      "check": "topk_any",
+      "expectedTitles": [
+        "了不起的盖茨比"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "金色香槟舞会",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "金色",
+          "香槟",
+          "舞会"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "了不起的盖茨比",
+          "movieTitle": "了不起的盖茨比",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "金色",
+              "香槟",
+              "舞会"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "金色",
+                "start": 13,
+                "end": 15,
+                "matchedText": "金色",
+                "excerpt": "大厅里光怪陆离，华乐奏响，金色的香槟酒像瀑布般倾泻。男男女女像飞蛾一般在笑语、香槟和繁星中穿梭。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "金色",
+                "start": 0,
+                "end": 2,
+                "matchedText": "金色",
+                "excerpt": "金色"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "香槟",
+                "start": 16,
+                "end": 18,
+                "matchedText": "香槟",
+                "excerpt": "大厅里光怪陆离，华乐奏响，金色的香槟酒像瀑布般倾泻。男男女女像飞蛾一般在笑语、香槟和繁星中穿梭。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "香槟",
+                "start": 0,
+                "end": 2,
+                "matchedText": "香槟",
+                "excerpt": "香槟"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "舞会",
+                "start": 0,
+                "end": 2,
+                "matchedText": "舞会",
+                "excerpt": "舞会"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "安娜·卡列尼娜",
+          "movieTitle": "安娜·卡列尼娜",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "舞会"
+            ],
+            "missingTerms": [
+              "金色",
+              "香槟"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "舞会",
+                "start": 8,
+                "end": 10,
+                "matchedText": "舞会",
+                "excerpt": "剧场式调度、华丽舞会、雪夜火车与红黑色礼服，把爱情、社会和命运压缩成一场绚烂悲剧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "舞会",
+                "start": 0,
+                "end": 2,
+                "matchedText": "舞会",
+                "excerpt": "舞会"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "追忆似水年华",
+          "movieTitle": "追忆似水年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "金色"
+            ],
+            "missingTerms": [
+              "香槟",
+              "舞会"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "金色",
+                "start": 26,
+                "end": 28,
+                "matchedText": "金色",
+                "excerpt": "室内、镜子、长廊与沙龙构成流动的记忆迷宫，时间像金色尘埃一样落下。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "金色",
+                "start": 0,
+                "end": 2,
+                "matchedText": "金色",
+                "excerpt": "金色"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "imagery-tea-cake-memory",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "茶与蛋糕的回忆",
+      "check": "topk_any",
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "茶与蛋糕的回忆",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "茶",
+          "蛋糕",
+          "回忆"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "追忆似水年华",
+          "movieTitle": "追忆似水年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "茶",
+              "蛋糕"
+            ],
+            "missingTerms": [
+              "回忆"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "茶",
+                "start": 14,
+                "end": 15,
+                "matchedText": "茶",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "茶",
+                "start": 0,
+                "end": 1,
+                "matchedText": "茶",
+                "excerpt": "茶"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "蛋糕",
+                "start": 18,
+                "end": 20,
+                "matchedText": "蛋糕",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "蛋糕",
+                "start": 0,
+                "end": 2,
+                "matchedText": "蛋糕",
+                "excerpt": "蛋糕"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "回忆"
+            ],
+            "missingTerms": [
+              "茶",
+              "蛋糕"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "回忆",
+                "start": 0,
+                "end": 2,
+                "matchedText": "回忆",
+                "excerpt": "回忆"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "挪威的森林",
+          "movieTitle": "挪威的森林",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "回忆"
+            ],
+            "missingTerms": [
+              "茶",
+              "蛋糕"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "回忆",
+                "start": 0,
+                "end": 2,
+                "matchedText": "回忆",
+                "excerpt": "回忆"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "imagery-pink-symmetric-hotel",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "粉色对称酒店",
+      "check": "topk_any",
+      "expectedTitles": [
+        "昨日的世界"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "粉色对称酒店",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "粉色",
+          "对称",
+          "酒店"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "粉色",
+              "对称",
+              "酒店"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "粉色",
+                "start": 16,
+                "end": 18,
+                "matchedText": "粉色",
+                "excerpt": "极度对称构图，搭配马卡龙般甜美的粉色与淡蓝色调，像一本精致却略带忧伤的立体童话书。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "粉色",
+                "start": 0,
+                "end": 2,
+                "matchedText": "粉色",
+                "excerpt": "粉色"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "对称",
+                "start": 2,
+                "end": 4,
+                "matchedText": "对称",
+                "excerpt": "极度对称构图，搭配马卡龙般甜美的粉色与淡蓝色调，像一本精致却略带忧伤的立体童话书"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "对称",
+                "start": 0,
+                "end": 2,
+                "matchedText": "对称",
+                "excerpt": "对称"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "酒店",
+                "start": 0,
+                "end": 2,
+                "matchedText": "酒店",
+                "excerpt": "酒店"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "imagery-moonlit-desert-fox",
+      "fixture": "retrieval-cases.json",
+      "category": "short_imagery",
+      "query": "月光沙漠狐狸",
+      "check": "topk_any",
+      "expectedTitles": [
+        "小王子"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "月光沙漠狐狸",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "月光",
+          "沙漠",
+          "狐狸"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "小王子",
+          "movieTitle": "小王子",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "月光",
+              "沙漠",
+              "狐狸"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "月光",
+                "start": 31,
+                "end": 33,
+                "matchedText": "月光",
+                "excerpt": "玫瑰花费了时间，才使你的玫瑰变得如此重要。沙漠在月光下安静得像一张展开的纸。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "月光",
+                "start": 0,
+                "end": 2,
+                "matchedText": "月光",
+                "excerpt": "月光"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "沙漠",
+                "start": 28,
+                "end": 30,
+                "matchedText": "沙漠",
+                "excerpt": "为你的玫瑰花费了时间，才使你的玫瑰变得如此重要。沙漠在月光下安静得像一张展开的纸。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "沙漠",
+                "start": 18,
+                "end": 20,
+                "matchedText": "沙漠",
+                "excerpt": "纸艺动画与星空意象交织，玫瑰、狐狸、沙漠和飞行员构成温柔又孤单的童话宇宙。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "沙漠",
+                "start": 0,
+                "end": 2,
+                "matchedText": "沙漠",
+                "excerpt": "沙漠"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "狐狸",
+                "start": 15,
+                "end": 17,
+                "matchedText": "狐狸",
+                "excerpt": "纸艺动画与星空意象交织，玫瑰、狐狸、沙漠和飞行员构成温柔又孤单的童话宇宙。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "狐狸",
+                "start": 0,
+                "end": 2,
+                "matchedText": "狐狸",
+                "excerpt": "狐狸"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "月亮与六便士",
+          "movieTitle": "月亮和六便士",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "月光"
+            ],
+            "missingTerms": [
+              "沙漠",
+              "狐狸"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "月光",
+                "start": 17,
+                "end": 19,
+                "matchedText": "月光",
+                "excerpt": "艺术家的出走、南太平洋的炽热色彩与月光下的孤绝追求，构成理想与现实的强烈对照。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "月光",
+                "start": 0,
+                "end": 2,
+                "matchedText": "月光",
+                "excerpt": "月光"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-green-dress-estate",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "想找英国庄园里穿祖母绿裙子的那个画面",
+      "check": "topk_any",
+      "expectedTitles": [
+        "赎罪"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "想找英国庄园里穿祖母绿裙子的那个画面",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "英国",
+          "庄园",
+          "祖母绿",
+          "裙子"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "英国",
+              "庄园",
+              "祖母绿",
+              "裙子"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "英国",
+                "start": 16,
+                "end": 18,
+                "matchedText": "英国",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满燥热与压抑的暧昧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "英国",
+                "start": 0,
+                "end": 2,
+                "matchedText": "英国",
+                "excerpt": "英国"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "庄园",
+                "start": 27,
+                "end": 29,
+                "matchedText": "庄园",
+                "excerpt": "个气温高得惊人的夏日。阳光像一层厚重的蜂蜜涂抹在庄园的草坪上...她穿上那件露背的祖母绿丝绸晚礼服，布料滑过肌肤的声音像是一"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "庄园",
+                "start": 20,
+                "end": 22,
+                "matchedText": "庄园",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满燥热与压抑的暧昧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "庄园",
+                "start": 0,
+                "end": 2,
+                "matchedText": "庄园",
+                "excerpt": "庄园"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "祖母绿",
+                "start": 44,
+                "end": 47,
+                "matchedText": "祖母绿",
+                "excerpt": "重的蜂蜜涂抹在庄园的草坪上...她穿上那件露背的祖母绿丝绸晚礼服，布料滑过肌肤的声音像是一场秘密的叹息。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "祖母绿",
+                "start": 6,
+                "end": 9,
+                "matchedText": "祖母绿",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "祖母绿",
+                "start": 0,
+                "end": 3,
+                "matchedText": "祖母绿",
+                "excerpt": "祖母绿"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "裙子",
+                "start": 1,
+                "end": 3,
+                "matchedText": "裙子",
+                "excerpt": "绿裙子"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "裙子",
+                "start": 0,
+                "end": 2,
+                "matchedText": "裙子",
+                "excerpt": "裙子"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "长日将尽",
+          "movieTitle": "告别有情天",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "庄园"
+            ],
+            "missingTerms": [
+              "英国",
+              "祖母绿",
+              "裙子"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "庄园",
+                "start": 2,
+                "end": 4,
+                "matchedText": "庄园",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "庄园",
+                "start": 0,
+                "end": 2,
+                "matchedText": "庄园",
+                "excerpt": "庄园"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-unsaid-rainy-farewell",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "想找雨夜里没有说出口的告别",
+      "check": "review_only",
+      "expectedTitles": [
+        "对倒",
+        "长日将尽"
+      ],
+      "legacyCandidateOutcome": "review",
+      "primaryOnlyOutcome": "review",
+      "includingPartialOutcome": "review",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "想找雨夜里没有说出口的告别",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "雨夜",
+          "出口",
+          "告别",
+          "没有说出口的告别"
+        ],
+        "unresolvedTerms": [
+          "说"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "对倒",
+          "movieTitle": "花样年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "雨夜"
+            ],
+            "missingTerms": [
+              "出口",
+              "告别",
+              "没有说出口的告别"
+            ],
+            "unresolvedTerms": [
+              "说"
+            ],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "雨夜",
+                "start": 0,
+                "end": 2,
+                "matchedText": "雨夜",
+                "excerpt": "雨夜"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "长日将尽",
+          "movieTitle": "告别有情天",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "出口",
+              "告别"
+            ],
+            "missingTerms": [
+              "雨夜",
+              "没有说出口的告别"
+            ],
+            "unresolvedTerms": [
+              "说"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "出口",
+                "start": 32,
+                "end": 34,
+                "matchedText": "出口",
+                "excerpt": "献给体面与职责，却在黄昏时发现真正想说的话从未说出口。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "出口",
+                "start": 17,
+                "end": 19,
+                "matchedText": "出口",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "告别",
+                "start": 0,
+                "end": 2,
+                "matchedText": "告别",
+                "excerpt": "告别有情天"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "告别",
+                "start": 0,
+                "end": 2,
+                "matchedText": "告别",
+                "excerpt": "告别"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-otaru-snow-shout",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "她在小樽的雪地里对着雪山呼喊",
+      "check": "topk_any",
+      "expectedTitles": [
+        "情书"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "她在小樽的雪地里对着雪山呼喊",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "小樽",
+          "雪地",
+          "雪山",
+          "呼喊"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "小樽",
+              "雪地",
+              "雪山",
+              "呼喊"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "小樽",
+                "start": 8,
+                "end": 10,
+                "matchedText": "小樽",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "小樽",
+                "start": 0,
+                "end": 2,
+                "matchedText": "小樽",
+                "excerpt": "小樽"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "雪地",
+                "start": 10,
+                "end": 12,
+                "matchedText": "雪地",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "雪山",
+                "start": 20,
+                "end": 22,
+                "matchedText": "雪山",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "呼喊",
+                "start": 24,
+                "end": 26,
+                "matchedText": "呼喊",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "雪山"
+            ],
+            "missingTerms": [
+              "小樽",
+              "雪地",
+              "呼喊"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "雪山",
+                "start": 0,
+                "end": 2,
+                "matchedText": "雪山",
+                "excerpt": "雪山"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-unsent-letter-youth",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "没有寄出的信，潮湿草地上的青春和死亡",
+      "check": "topk_any",
+      "expectedTitles": [
+        "挪威的森林"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "没有寄出的信，潮湿草地上的青春和死亡",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "寄出",
+          "信",
+          "潮湿",
+          "草地",
+          "青春",
+          "死亡",
+          "没有寄出的信"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "挪威的森林",
+          "movieTitle": "挪威的森林",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "寄出",
+              "信",
+              "潮湿",
+              "草地",
+              "青春",
+              "死亡",
+              "没有寄出的信"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "寄出",
+                "start": 33,
+                "end": 35,
+                "matchedText": "寄出",
+                "excerpt": "而作为生的一部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "信",
+                "start": 36,
+                "end": 37,
+                "matchedText": "信",
+                "excerpt": "生的一部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "潮湿",
+                "start": 39,
+                "end": 41,
+                "matchedText": "潮湿",
+                "excerpt": "部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "潮湿",
+                "start": 27,
+                "end": 29,
+                "matchedText": "潮湿",
+                "excerpt": "红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的爱。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "潮湿",
+                "start": 0,
+                "end": 2,
+                "matchedText": "潮湿",
+                "excerpt": "潮湿"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "草地",
+                "start": 23,
+                "end": 25,
+                "matchedText": "草地",
+                "excerpt": "死并非生的对立面，而作为生的一部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "草地",
+                "start": 0,
+                "end": 2,
+                "matchedText": "草地",
+                "excerpt": "草地、红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "草地",
+                "start": 0,
+                "end": 2,
+                "matchedText": "草地",
+                "excerpt": "草地"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "青春",
+                "start": 26,
+                "end": 28,
+                "matchedText": "青春",
+                "excerpt": "非生的对立面，而作为生的一部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "青春",
+                "start": 18,
+                "end": 20,
+                "matchedText": "青春",
+                "excerpt": "草地、红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的爱。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "青春",
+                "start": 0,
+                "end": 2,
+                "matchedText": "青春",
+                "excerpt": "青春"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "死亡",
+                "start": 0,
+                "end": 2,
+                "matchedText": "死亡",
+                "excerpt": "死亡"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "没有寄出的信",
+                "start": 31,
+                "end": 37,
+                "matchedText": "没有寄出的信",
+                "excerpt": "面，而作为生的一部分永存。风穿过草地，青春像一封没有寄出的信，在潮湿的绿意里慢慢变旧。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "信",
+              "青春"
+            ],
+            "missingTerms": [
+              "寄出",
+              "潮湿",
+              "草地",
+              "死亡",
+              "没有寄出的信"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "信",
+                "start": 0,
+                "end": 1,
+                "matchedText": "信",
+                "excerpt": "信"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "青春",
+                "start": 0,
+                "end": 2,
+                "matchedText": "青春",
+                "excerpt": "青春"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "对倒",
+          "movieTitle": "花样年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "潮湿"
+            ],
+            "missingTerms": [
+              "寄出",
+              "信",
+              "草地",
+              "青春",
+              "死亡",
+              "没有寄出的信"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "潮湿",
+                "start": 13,
+                "end": 15,
+                "matchedText": "潮湿",
+                "excerpt": "苏丽珍穿着高领印花旗袍走在潮湿狭窄的楼梯上。画面被深沉的红调和黯淡的黄晕笼罩，每一帧都是难以言说的克制"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "潮湿",
+                "start": 0,
+                "end": 2,
+                "matchedText": "潮湿",
+                "excerpt": "潮湿"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-tea-cake-memory",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "我想找茶水和小蛋糕让人突然想起往事的文字",
+      "check": "topk_any",
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "我想找茶水和小蛋糕让人突然想起往事的文字",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "茶水",
+          "蛋糕",
+          "想起",
+          "往事"
+        ],
+        "unresolvedTerms": [
+          "突然"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "追忆似水年华",
+          "movieTitle": "追忆似水年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "茶水",
+              "蛋糕",
+              "往事"
+            ],
+            "missingTerms": [
+              "想起"
+            ],
+            "unresolvedTerms": [
+              "突然"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "茶水",
+                "start": 14,
+                "end": 16,
+                "matchedText": "茶水",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "蛋糕",
+                "start": 18,
+                "end": 20,
+                "matchedText": "蛋糕",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "蛋糕",
+                "start": 0,
+                "end": 2,
+                "matchedText": "蛋糕",
+                "excerpt": "蛋糕"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "往事",
+                "start": 1,
+                "end": 3,
+                "matchedText": "往事",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "往事",
+                "start": 0,
+                "end": 2,
+                "matchedText": "往事",
+                "excerpt": "往事"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "霍乱时期的爱情",
+          "movieTitle": "霍乱时期的爱情",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "想起"
+            ],
+            "missingTerms": [
+              "茶水",
+              "蛋糕",
+              "往事"
+            ],
+            "unresolvedTerms": [
+              "突然"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "想起",
+                "start": 15,
+                "end": 17,
+                "matchedText": "想起",
+                "excerpt": "不可避免，苦杏仁的气味总是让他想起爱情受阻后的命运。河流缓慢，热带午后的空气像一封迟到半生的情书。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "natural-butler-duty-regret",
+      "fixture": "retrieval-cases.json",
+      "category": "natural_language",
+      "query": "一个把一生献给职责却没能说出感情的英国管家",
+      "check": "topk_any",
+      "expectedTitles": [
+        "长日将尽"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "一个把一生献给职责却没能说出感情的英国管家",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "一生",
+          "献给",
+          "职责",
+          "英国",
+          "管家",
+          "没能说出感情的英国管家"
+        ],
+        "unresolvedTerms": [
+          "却没能",
+          "说出",
+          "感情"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "长日将尽",
+          "movieTitle": "告别有情天",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "一生",
+              "献给",
+              "职责",
+              "管家"
+            ],
+            "missingTerms": [
+              "英国",
+              "没能说出感情的英国管家"
+            ],
+            "unresolvedTerms": [
+              "却没能",
+              "说出",
+              "感情"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "一生",
+                "start": 6,
+                "end": 8,
+                "matchedText": "一生",
+                "excerpt": "一个人可以把一生献给体面与职责，却在黄昏时发现真正想说的话从未说出口。"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "献给",
+                "start": 8,
+                "end": 10,
+                "matchedText": "献给",
+                "excerpt": "一个人可以把一生献给体面与职责，却在黄昏时发现真正想说的话从未说出口。"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "职责",
+                "start": 13,
+                "end": 15,
+                "matchedText": "职责",
+                "excerpt": "一个人可以把一生献给体面与职责，却在黄昏时发现真正想说的话从未说出口。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "职责",
+                "start": 0,
+                "end": 2,
+                "matchedText": "职责",
+                "excerpt": "职责"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "管家",
+                "start": 12,
+                "end": 14,
+                "matchedText": "管家",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "管家",
+                "start": 0,
+                "end": 2,
+                "matchedText": "管家",
+                "excerpt": "管家"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "英国"
+            ],
+            "missingTerms": [
+              "一生",
+              "献给",
+              "职责",
+              "管家",
+              "没能说出感情的英国管家"
+            ],
+            "unresolvedTerms": [
+              "却没能",
+              "说出",
+              "感情"
+            ],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "英国",
+                "start": 16,
+                "end": 18,
+                "matchedText": "英国",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满燥热与压抑的暧昧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "英国",
+                "start": 0,
+                "end": 2,
+                "matchedText": "英国",
+                "excerpt": "英国"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-match-quantum-chip",
+      "fixture": "retrieval-cases.json",
+      "category": "no_match",
+      "query": "量子计算机超导芯片",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "量子计算机超导芯片",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [],
+        "unresolvedTerms": [
+          "量子",
+          "计算",
+          "机",
+          "超",
+          "导",
+          "芯",
+          "片"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "no-match-object-detector",
+      "fixture": "retrieval-cases.json",
+      "category": "no_match",
+      "query": "如何训练目标检测模型",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "如何训练目标检测模型",
+        "logic": "all",
+        "intent": "outside_scope",
+        "requiredTerms": [],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。",
+        "reason": "当前入口检索文学与电影意象，不回答操作教程；颜色词不足以支持这类查询。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "no-match-noodle-recipe",
+      "fixture": "retrieval-cases.json",
+      "category": "no_match",
+      "query": "红烧牛肉面做法",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "红烧牛肉面做法",
+        "logic": "all",
+        "intent": "outside_scope",
+        "requiredTerms": [],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。",
+        "reason": "当前入口检索文学与电影意象，不回答操作教程；颜色词不足以支持这类查询。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "no-match-space-battle",
+      "fixture": "retrieval-cases.json",
+      "category": "no_match",
+      "query": "星际飞船的太空战斗",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "星际飞船的太空战斗",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [],
+        "unresolvedTerms": [
+          "星际",
+          "飞船",
+          "太空",
+          "战斗"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "constraint-snow-without-train",
+      "fixture": "retrieval-cases.json",
+      "category": "constrained",
+      "query": "有雪但不要火车",
+      "check": "topk_any_without_forbidden",
+      "expectedTitles": [
+        "情书",
+        "昨日的世界"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "有雪但不要火车",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "雪"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [
+          "火车"
+        ],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "雪"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "雪",
+                "start": 8,
+                "end": 9,
+                "matchedText": "雪",
+                "excerpt": "满眼都是白茫茫的雪。如果真的有天国，那里的雪也一定会像这样，把所有的悲伤都静静地掩盖起来吧"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "雪",
+                "start": 10,
+                "end": 11,
+                "matchedText": "雪",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "雪",
+                "start": 0,
+                "end": 1,
+                "matchedText": "雪",
+                "excerpt": "雪"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "雪"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "雪",
+                "start": 0,
+                "end": 1,
+                "matchedText": "雪",
+                "excerpt": "雪山"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "constraint-estate-dusk-butler",
+      "fixture": "retrieval-cases.json",
+      "category": "constrained",
+      "query": "英国庄园里黄昏的管家",
+      "check": "topk_any",
+      "expectedTitles": [
+        "长日将尽"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "英国庄园里黄昏的管家",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "英国",
+          "庄园",
+          "黄昏",
+          "管家"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "长日将尽",
+          "movieTitle": "告别有情天",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "庄园",
+              "黄昏",
+              "管家"
+            ],
+            "missingTerms": [
+              "英国"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "庄园",
+                "start": 2,
+                "end": 4,
+                "matchedText": "庄园",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "庄园",
+                "start": 0,
+                "end": 2,
+                "matchedText": "庄园",
+                "excerpt": "庄园"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "黄昏",
+                "start": 18,
+                "end": 20,
+                "matchedText": "黄昏",
+                "excerpt": "一个人可以把一生献给体面与职责，却在黄昏时发现真正想说的话从未说出口。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "黄昏",
+                "start": 5,
+                "end": 7,
+                "matchedText": "黄昏",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "黄昏",
+                "start": 0,
+                "end": 2,
+                "matchedText": "黄昏",
+                "excerpt": "黄昏"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "管家",
+                "start": 12,
+                "end": 14,
+                "matchedText": "管家",
+                "excerpt": "英式庄园、黄昏走廊、克制管家与未说出口的情感，画面典雅而压抑。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "管家",
+                "start": 0,
+                "end": 2,
+                "matchedText": "管家",
+                "excerpt": "管家"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "英国",
+              "庄园"
+            ],
+            "missingTerms": [
+              "黄昏",
+              "管家"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "英国",
+                "start": 16,
+                "end": 18,
+                "matchedText": "英国",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满燥热与压抑的暧昧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "英国",
+                "start": 0,
+                "end": 2,
+                "matchedText": "英国",
+                "excerpt": "英国"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "庄园",
+                "start": 27,
+                "end": 29,
+                "matchedText": "庄园",
+                "excerpt": "个气温高得惊人的夏日。阳光像一层厚重的蜂蜜涂抹在庄园的草坪上...她穿上那件露背的祖母绿丝绸晚礼服，布料滑过肌肤的声音像是一"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "庄园",
+                "start": 20,
+                "end": 22,
+                "matchedText": "庄园",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满燥热与压抑的暧昧。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "庄园",
+                "start": 0,
+                "end": 2,
+                "matchedText": "庄园",
+                "excerpt": "庄园"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "constraint-snow-emerald-dress",
+      "fixture": "retrieval-cases.json",
+      "category": "constrained",
+      "query": "雪地里穿祖母绿裙子",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "fail",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "fail",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "雪地里穿祖母绿裙子",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "雪地",
+          "祖母绿",
+          "裙子"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "赎罪",
+          "movieTitle": "赎罪",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "祖母绿",
+              "裙子"
+            ],
+            "missingTerms": [
+              "雪地"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "祖母绿",
+                "start": 44,
+                "end": 47,
+                "matchedText": "祖母绿",
+                "excerpt": "重的蜂蜜涂抹在庄园的草坪上...她穿上那件露背的祖母绿丝绸晚礼服，布料滑过肌肤的声音像是一场秘密的叹息。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "祖母绿",
+                "start": 6,
+                "end": 9,
+                "matchedText": "祖母绿",
+                "excerpt": "塞西莉亚穿着祖母绿丝绸露背裙，在英国乡村庄园的藏书室里。画面呈现油画般浓郁的黄绿色调，充满"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "祖母绿",
+                "start": 0,
+                "end": 3,
+                "matchedText": "祖母绿",
+                "excerpt": "祖母绿"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "裙子",
+                "start": 1,
+                "end": 3,
+                "matchedText": "裙子",
+                "excerpt": "绿裙子"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "裙子",
+                "start": 0,
+                "end": 2,
+                "matchedText": "裙子",
+                "excerpt": "裙子"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "情书",
+          "movieTitle": "情书",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "雪地"
+            ],
+            "missingTerms": [
+              "祖母绿",
+              "裙子"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "雪地",
+                "start": 10,
+                "end": 12,
+                "matchedText": "雪地",
+                "excerpt": "渡边博子在纯白的小樽雪地里奔跑，对着茫茫雪山大声呼喊。呈现出清冷蓝白色调与胶片柔光。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "constraint-harbour-without-snow",
+      "fixture": "retrieval-cases.json",
+      "category": "constrained",
+      "query": "不要雪，只想找海港的悲伤",
+      "check": "topk_any_without_forbidden",
+      "expectedTitles": [
+        "海边的曼彻斯特"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "不要雪，只想找海港的悲伤",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "海港",
+          "悲伤"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [
+          "雪"
+        ],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "海边的曼彻斯特",
+          "movieTitle": "海边的曼彻斯特",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "海港",
+              "悲伤"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "海港",
+                "start": 2,
+                "end": 4,
+                "matchedText": "海港",
+                "excerpt": "冬日海港、蓝灰天空、空旷街道和沉默的人物构成冷冽写实的悲伤氛围。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "悲伤",
+                "start": 27,
+                "end": 29,
+                "matchedText": "悲伤",
+                "excerpt": "港、蓝灰天空、空旷街道和沉默的人物构成冷冽写实的悲伤氛围。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "悲伤",
+                "start": 0,
+                "end": 2,
+                "matchedText": "悲伤",
+                "excerpt": "悲伤"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "constraint-tea-without-party",
+      "fixture": "retrieval-cases.json",
+      "category": "constrained",
+      "query": "法国的茶与蛋糕，不要香槟派对",
+      "check": "topk_any_without_forbidden",
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "法国的茶与蛋糕，不要香槟派对",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "法国",
+          "茶",
+          "蛋糕"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [
+          "香槟派对",
+          "香槟",
+          "派对"
+        ],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "追忆似水年华",
+          "movieTitle": "追忆似水年华",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "法国",
+              "茶",
+              "蛋糕"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "法国",
+                "start": 0,
+                "end": 2,
+                "matchedText": "法国",
+                "excerpt": "法国"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "茶",
+                "start": 14,
+                "end": 15,
+                "matchedText": "茶",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "茶",
+                "start": 0,
+                "end": 1,
+                "matchedText": "茶",
+                "excerpt": "茶"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "蛋糕",
+                "start": 18,
+                "end": 20,
+                "matchedText": "蛋糕",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "蛋糕",
+                "start": 0,
+                "end": 2,
+                "matchedText": "蛋糕",
+                "excerpt": "蛋糕"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "supplement-exact-title-anna",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "known_item",
+      "query": "安娜·卡列尼娜",
+      "check": "top1",
+      "expectedTitles": [
+        "安娜·卡列尼娜"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "安娜·卡列尼娜",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "安娜卡列尼娜"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "安娜·卡列尼娜",
+          "movieTitle": "安娜·卡列尼娜",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "安娜卡列尼娜"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureTitle",
+                "fieldLabel": "书名",
+                "term": "安娜卡列尼娜",
+                "start": 0,
+                "end": 7,
+                "matchedText": "安娜·卡列尼娜",
+                "excerpt": "安娜·卡列尼娜"
+              },
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "安娜卡列尼娜",
+                "start": 0,
+                "end": 7,
+                "matchedText": "安娜·卡列尼娜",
+                "excerpt": "安娜·卡列尼娜"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "supplement-exact-author-kundera",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "known_item",
+      "query": "米兰·昆德拉",
+      "check": "top1",
+      "expectedTitles": [
+        "不能承受的生命之轻"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "米兰·昆德拉",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "米兰昆德拉"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "不能承受的生命之轻",
+          "movieTitle": "布拉格之恋",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "米兰昆德拉"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "literatureAuthor",
+                "fieldLabel": "作者",
+                "term": "米兰昆德拉",
+                "start": 0,
+                "end": 6,
+                "matchedText": "米兰·昆德拉",
+                "excerpt": "米兰·昆德拉"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "supplement-exact-movie-grand-budapest",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "known_item",
+      "query": "布达佩斯大饭店",
+      "check": "top1",
+      "expectedTitles": [
+        "昨日的世界"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "布达佩斯大饭店",
+        "logic": "all",
+        "intent": "known_item",
+        "requiredTerms": [
+          "布达佩斯大饭店"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店",
+          "match": {
+            "type": "exact_metadata",
+            "matchedTerms": [
+              "布达佩斯大饭店"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "movieTitle",
+                "fieldLabel": "电影名",
+                "term": "布达佩斯大饭店",
+                "start": 0,
+                "end": 7,
+                "matchedText": "布达佩斯大饭店",
+                "excerpt": "布达佩斯大饭店"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "supplement-imagery-red-sweater-sky",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "short_imagery",
+      "query": "红毛衣 阴郁天空",
+      "check": "topk_any",
+      "expectedTitles": [
+        "挪威的森林"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "红毛衣 阴郁天空",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "红毛衣",
+          "阴郁",
+          "天空"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "挪威的森林",
+          "movieTitle": "挪威的森林",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "红毛衣",
+              "阴郁",
+              "天空"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "红毛衣",
+                "start": 0,
+                "end": 3,
+                "matchedText": "红毛衣",
+                "excerpt": "红毛衣"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "阴郁",
+                "start": 8,
+                "end": 10,
+                "matchedText": "阴郁",
+                "excerpt": "草地、红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的爱。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "天空",
+                "start": 10,
+                "end": 12,
+                "matchedText": "天空",
+                "excerpt": "草地、红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的爱。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": [
+        {
+          "title": "海边的曼彻斯特",
+          "movieTitle": "海边的曼彻斯特",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "天空"
+            ],
+            "missingTerms": [
+              "红毛衣",
+              "阴郁"
+            ],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "天空",
+                "start": 18,
+                "end": 20,
+                "matchedText": "天空",
+                "excerpt": "海风把所有话语吹得很轻，港口的蓝灰色天空下，一个人带着无法修补的过去，在寒冷小镇里沉默行走。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "天空",
+                "start": 7,
+                "end": 9,
+                "matchedText": "天空",
+                "excerpt": "冬日海港、蓝灰天空、空旷街道和沉默的人物构成冷冽写实的悲伤氛围。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "supplement-imagery-paper-animation-stars",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "short_imagery",
+      "query": "纸艺动画和星空",
+      "check": "topk_any",
+      "expectedTitles": [
+        "小王子"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "纸艺动画和星空",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "纸艺",
+          "动画",
+          "星空"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "小王子",
+          "movieTitle": "小王子",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "纸艺",
+              "动画",
+              "星空"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "纸艺",
+                "start": 0,
+                "end": 2,
+                "matchedText": "纸艺",
+                "excerpt": "纸艺动画与星空意象交织，玫瑰、狐狸、沙漠和飞行员构成温柔又孤单的童话宇宙。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "纸艺",
+                "start": 0,
+                "end": 2,
+                "matchedText": "纸艺",
+                "excerpt": "纸艺"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "动画",
+                "start": 2,
+                "end": 4,
+                "matchedText": "动画",
+                "excerpt": "纸艺动画与星空意象交织，玫瑰、狐狸、沙漠和飞行员构成温柔又孤单的童话宇宙。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "星空",
+                "start": 5,
+                "end": 7,
+                "matchedText": "星空",
+                "excerpt": "纸艺动画与星空意象交织，玫瑰、狐狸、沙漠和飞行员构成温柔又孤单的童话宇宙。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "星空",
+                "start": 0,
+                "end": 2,
+                "matchedText": "星空",
+                "excerpt": "星空"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    },
+    {
+      "id": "supplement-natural-corridor-mirror-memory",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "natural_language",
+      "query": "有没有那种走过长廊和镜子、像陷在记忆迷宫里的电影",
+      "check": "topk_any",
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "有没有那种走过长廊和镜子、像陷在记忆迷宫里的电影",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "长廊",
+          "镜子",
+          "记忆",
+          "迷宫"
+        ],
+        "unresolvedTerms": [
+          "走过",
+          "像",
+          "陷"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "追忆似水年华",
+          "movieTitle": "追忆似水年华",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "长廊",
+              "镜子",
+              "记忆",
+              "迷宫"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [
+              "走过",
+              "像",
+              "陷"
+            ],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "长廊",
+                "start": 8,
+                "end": 10,
+                "matchedText": "长廊",
+                "excerpt": "昏黄室内、镜子、长廊与沙龙构成流动的记忆迷宫，时间像金色尘埃一样落下。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "长廊",
+                "start": 0,
+                "end": 2,
+                "matchedText": "长廊",
+                "excerpt": "长廊"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "镜子",
+                "start": 5,
+                "end": 7,
+                "matchedText": "镜子",
+                "excerpt": "昏黄室内、镜子、长廊与沙龙构成流动的记忆迷宫，时间像金色尘埃一样落下。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "镜子",
+                "start": 0,
+                "end": 2,
+                "matchedText": "镜子",
+                "excerpt": "镜子"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "记忆",
+                "start": 6,
+                "end": 8,
+                "matchedText": "记忆",
+                "excerpt": "当往事一旦从记忆的深处浮起，茶水与小蛋糕的香气便使整个失落的世界重新显形。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "记忆",
+                "start": 18,
+                "end": 20,
+                "matchedText": "记忆",
+                "excerpt": "昏黄室内、镜子、长廊与沙龙构成流动的记忆迷宫，时间像金色尘埃一样落下。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "记忆",
+                "start": 0,
+                "end": 2,
+                "matchedText": "记忆",
+                "excerpt": "记忆"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "迷宫",
+                "start": 20,
+                "end": 22,
+                "matchedText": "迷宫",
+                "excerpt": "昏黄室内、镜子、长廊与沙龙构成流动的记忆迷宫，时间像金色尘埃一样落下。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "挪威的森林",
+          "movieTitle": "挪威的森林",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "记忆"
+            ],
+            "missingTerms": [
+              "长廊",
+              "镜子",
+              "迷宫"
+            ],
+            "unresolvedTerms": [
+              "走过",
+              "像",
+              "陷"
+            ],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "记忆",
+                "start": 20,
+                "end": 22,
+                "matchedText": "记忆",
+                "excerpt": "草地、红色毛衣、阴郁天空和缓慢移动的青春记忆，画面带着潮湿、忧郁和无法抵达的爱。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "supplement-natural-artist-island-ideal",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "natural_language",
+      "query": "想看一位艺术家离开原来的生活去热带岛屿追求理想",
+      "check": "topk_any",
+      "expectedTitles": [
+        "月亮与六便士"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "fail",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "想看一位艺术家离开原来的生活去热带岛屿追求理想",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "艺术",
+          "热带",
+          "岛屿",
+          "追求",
+          "理想"
+        ],
+        "unresolvedTerms": [
+          "一位",
+          "家",
+          "离开",
+          "原来",
+          "生活",
+          "去"
+        ],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [],
+      "partial": [
+        {
+          "title": "月亮与六便士",
+          "movieTitle": "月亮和六便士",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "艺术",
+              "热带",
+              "岛屿",
+              "追求",
+              "理想"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [
+              "一位",
+              "家",
+              "离开",
+              "原来",
+              "生活",
+              "去"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "艺术",
+                "start": 27,
+                "end": 29,
+                "matchedText": "艺术",
+                "excerpt": "是六便士，他却抬头看见了月亮。热带岛屿的夜色里，艺术像一团危险而迷人的火。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "艺术",
+                "start": 0,
+                "end": 2,
+                "matchedText": "艺术",
+                "excerpt": "艺术家的出走、南太平洋的炽热色彩与月光下的孤绝追求，构成理想与现实的强烈对照"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "艺术",
+                "start": 0,
+                "end": 2,
+                "matchedText": "艺术",
+                "excerpt": "艺术"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "热带",
+                "start": 18,
+                "end": 20,
+                "matchedText": "热带",
+                "excerpt": "满地都是六便士，他却抬头看见了月亮。热带岛屿的夜色里，艺术像一团危险而迷人的火。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "热带",
+                "start": 0,
+                "end": 2,
+                "matchedText": "热带",
+                "excerpt": "热带"
+              },
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "岛屿",
+                "start": 20,
+                "end": 22,
+                "matchedText": "岛屿",
+                "excerpt": "满地都是六便士，他却抬头看见了月亮。热带岛屿的夜色里，艺术像一团危险而迷人的火。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "岛屿",
+                "start": 0,
+                "end": 2,
+                "matchedText": "岛屿",
+                "excerpt": "岛屿"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "追求",
+                "start": 23,
+                "end": 25,
+                "matchedText": "追求",
+                "excerpt": "艺术家的出走、南太平洋的炽热色彩与月光下的孤绝追求，构成理想与现实的强烈对照。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "理想",
+                "start": 28,
+                "end": 30,
+                "matchedText": "理想",
+                "excerpt": "出走、南太平洋的炽热色彩与月光下的孤绝追求，构成理想与现实的强烈对照。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "理想",
+                "start": 0,
+                "end": 2,
+                "matchedText": "理想",
+                "excerpt": "理想"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "霍乱时期的爱情",
+          "movieTitle": "霍乱时期的爱情",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "热带"
+            ],
+            "missingTerms": [
+              "艺术",
+              "岛屿",
+              "追求",
+              "理想"
+            ],
+            "unresolvedTerms": [
+              "一位",
+              "家",
+              "离开",
+              "原来",
+              "生活",
+              "去"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "热带",
+                "start": 31,
+                "end": 33,
+                "matchedText": "热带",
+                "excerpt": "仁的气味总是让他想起爱情受阻后的命运。河流缓慢，热带午后的空气像一封迟到半生的情书。"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "热带",
+                "start": 0,
+                "end": 2,
+                "matchedText": "热带",
+                "excerpt": "热带河流、旧船、花束与漫长等待构成南美式的浓烈色彩，爱情在时间中发酵成苦甜的"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "热带",
+                "start": 0,
+                "end": 2,
+                "matchedText": "热带",
+                "excerpt": "热带"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        },
+        {
+          "title": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店",
+          "match": {
+            "type": "partial",
+            "matchedTerms": [
+              "艺术"
+            ],
+            "missingTerms": [
+              "热带",
+              "岛屿",
+              "追求",
+              "理想"
+            ],
+            "unresolvedTerms": [
+              "一位",
+              "家",
+              "离开",
+              "原来",
+              "生活",
+              "去"
+            ],
+            "witnesses": [
+              {
+                "field": "quote",
+                "fieldLabel": "待核验摘句",
+                "term": "艺术",
+                "start": 33,
+                "end": 35,
+                "matchedText": "艺术",
+                "excerpt": "时代，一切似乎都井然有序，人们在华丽的穹顶下谈论艺术与诗歌，却不知深渊正在逼近。"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "supplement-no-match-green-rangefinder",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "no_match",
+      "query": "绿色激光测距仪怎么校准",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "fail",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "绿色激光测距仪怎么校准",
+        "logic": "all",
+        "intent": "outside_scope",
+        "requiredTerms": [],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。",
+        "reason": "当前入口检索文学与电影意象，不回答操作教程；颜色词不足以支持这类查询。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "supplement-no-match-pink-headphones",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "no_match",
+      "query": "粉色无线耳机怎么连接电脑",
+      "check": "empty",
+      "expectedTitles": [],
+      "legacyCandidateOutcome": "fail",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "粉色无线耳机怎么连接电脑",
+        "logic": "all",
+        "intent": "outside_scope",
+        "requiredTerms": [],
+        "unresolvedTerms": [],
+        "excludedTerms": [],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。",
+        "reason": "当前入口检索文学与电影意象，不回答操作教程；颜色词不足以支持这类查询。"
+      },
+      "primary": [],
+      "partial": []
+    },
+    {
+      "id": "supplement-constraint-dawn-without-dusk-regret",
+      "fixture": "retrieval-holdout-cases.json",
+      "category": "constrained",
+      "query": "找清晨薄雾里的告白，不要黄昏庄园里的遗憾",
+      "check": "topk_any_without_forbidden",
+      "expectedTitles": [
+        "傲慢与偏见"
+      ],
+      "legacyCandidateOutcome": "pass",
+      "primaryOnlyOutcome": "pass",
+      "includingPartialOutcome": "pass",
+      "queryPlan": {
+        "version": 2,
+        "rawQuery": "找清晨薄雾里的告白，不要黄昏庄园里的遗憾",
+        "logic": "all",
+        "intent": "search",
+        "requiredTerms": [
+          "清晨",
+          "薄雾",
+          "告白"
+        ],
+        "unresolvedTerms": [],
+        "excludedTerms": [
+          "黄昏庄园里的遗憾",
+          "黄昏",
+          "庄园",
+          "遗憾"
+        ],
+        "scope": "record_text",
+        "sameSceneVerified": false,
+        "note": "命中只说明当前记录文字支持这些条件，不证明原文真实、镜头共现或画面中不存在排除项。"
+      },
+      "primary": [
+        {
+          "title": "傲慢与偏见",
+          "movieTitle": "傲慢与偏见",
+          "match": {
+            "type": "all_text_conditions",
+            "matchedTerms": [
+              "清晨",
+              "薄雾",
+              "告白"
+            ],
+            "missingTerms": [],
+            "unresolvedTerms": [],
+            "witnesses": [
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "清晨",
+                "start": 5,
+                "end": 7,
+                "matchedText": "清晨",
+                "excerpt": "达西先生在清晨的薄雾中，穿过挂满露珠的荒野向伊丽莎白走来。灰蓝色冷调晨光与古典英伦风光"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "清晨",
+                "start": 0,
+                "end": 2,
+                "matchedText": "清晨",
+                "excerpt": "清晨"
+              },
+              {
+                "field": "description",
+                "fieldLabel": "站内描述",
+                "term": "薄雾",
+                "start": 8,
+                "end": 10,
+                "matchedText": "薄雾",
+                "excerpt": "达西先生在清晨的薄雾中，穿过挂满露珠的荒野向伊丽莎白走来。灰蓝色冷调晨光与古典英伦风光交融。"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "薄雾",
+                "start": 0,
+                "end": 2,
+                "matchedText": "薄雾",
+                "excerpt": "薄雾"
+              },
+              {
+                "field": "keyword",
+                "fieldLabel": "人工标签",
+                "term": "告白",
+                "start": 0,
+                "end": 2,
+                "matchedText": "告白",
+                "excerpt": "告白"
+              }
+            ],
+            "scope": "record_text",
+            "sameSceneVerified": false
+          }
+        }
+      ],
+      "partial": []
+    }
+  ]
+}

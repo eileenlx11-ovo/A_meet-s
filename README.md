@@ -107,3 +107,22 @@ npm run evaluate:retrieval -- --fixtures test/fixtures/retrieval-holdout-cases.j
 - 生图模块根据作品文字信息生成票券、书签、海报。它与“从真实影像中检索匹配画面”是两个独立能力。
 
 后续先补充可核验段落、作品关联类型和带时间戳的真实镜头，再用新的标注数据决定是否引入文字语义检索或跨模态检索。
+
+## 第二阶段：可解释检索与来源状态
+
+第二阶段将搜索结果分为“全部已解析文字条件命中”“部分相关候选”“外部书目资料”；这些状态均不表示真实镜头已经核验。作品页新增参考版本来源与中文摘句待核验提示，不把主题联想当作直接改编。
+
+- [进度、验证范围和已知限制](docs/stage2/PROGRESS.md)
+- [内容来源](docs/stage2/SOURCES.md)
+- [文字语义与跨模态的比较协议](docs/stage2/COMPARISON-PROTOCOL.md)
+
+```bash
+npm run test:stage2
+npm run test:stage2:dom
+npm run evaluate:evidence
+npm run audit:evidence
+```
+
+`test:stage2:dom` 使用离线 DOM 与显式进程内服务适配，不是完整站点测试。完整 API/站点仍运行 `npm test`、`npm run test:browser`；第二阶段 HTTP 组件冒烟为 `npm run test:stage2:browser`。
+
+评估与来源审计默认退出码 0 只表示执行成功。加 `-- --strict` 时，有未通过查询或缺少内容核验会返回非零。本轮没有安装语义或跨模态模型，也没有标注真实影视镜头。

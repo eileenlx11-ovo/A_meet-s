@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-10-19T15:48:42.040Z",
+  "scope": "Real Chromium + isolated native HTTP harness + production search service + real SQLite. Not full Express/auth; not live providers or video playback.",
+  "runtime": {
+    "node": "v22.16.0",
+    "playwright": "1.57.0-beta-1764944708000",
+    "chromium": "144.0.7559.96"
+  },
+  "cases": [
+    {
+      "name": "rainy-night primary result has field-level witnesses",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/search.html\nCall log:\n  - navigating to \"http://127.0.0.1:38767/search.html\", waiting until \"load\"\n"
+    },
+    {
+      "name": "snow/dress has two labelled partial suggestions and no complete result",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/search.html\nCall log:\n  - navigating to \"http://127.0.0.1:38767/search.html\", waiting until \"load\"\n"
+    },
+    {
+      "name": "procedure query displays scope explanation, not colour recommendations",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/search.html\nCall log:\n  - navigating to \"http://127.0.0.1:38767/search.html\", waiting until \"load\"\n"
+    },
+    {
+      "name": "located English passage never certifies the existing Chinese quote",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/source-fixture.html?id=5\nCall log:\n  - navigating to \"http://127.0.0.1:38767/source-fixture.html?id=5\", waiting until \"load\"\n"
+    },
+    {
+      "name": "Hours relationship is rendered as editorial, not direct adaptation",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/source-fixture.html?id=15\nCall log:\n  - navigating to \"http://127.0.0.1:38767/source-fixture.html?id=15\", waiting until \"load\"\n"
+    },
+    {
+      "name": "untrusted source and witness strings remain inert text",
+      "passed": false,
+      "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+    },
+    {
+      "name": "late search responses do not replace the latest query",
+      "passed": false,
+      "error": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:38767/search.html\nCall log:\n  - navigating to \"http://127.0.0.1:38767/search.html\", waiting until \"load\"\n"
+    }
+  ],
+  "pageErrors": [],
+  "passed": false
+}

@@ -11,7 +11,12 @@
     "dev": "node server/app.js",
     "test": "node ./node_modules/vitest/vitest.mjs run",
     "test:browser": "node scripts/smoke-browser.js",
-    "evaluate:retrieval": "node scripts/evaluate-retrieval.js"
+    "evaluate:retrieval": "node scripts/evaluate-retrieval.js",
+    "test:stage2": "node --test test/stage2/evidence.node.cjs",
+    "evaluate:evidence": "node scripts/evaluate-evidence.js",
+    "audit:evidence": "node scripts/audit-evidence.js",
+    "test:stage2:browser": "node scripts/smoke-evidence-browser.js",
+    "test:stage2:dom": "node scripts/test-evidence-dom.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

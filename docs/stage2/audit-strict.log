@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "seedRecords": 16,
+    "currentSnapshots": 16,
+    "unverifiedChineseQuotes": 16,
+    "locatedReferencePassages": 2,
+    "sourceVerifiedAdaptationPairs": 1,
+    "editorialThemePairs": 1,
+    "unverifiedPairs": 14,
+    "pendingVideos": 6,
+    "structurallyReviewedSegments": 0
+  },
+  "readyForVerifiedQuotationUse": false,
+  "readyForVisualEvaluation": false
+}
