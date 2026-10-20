@@ -18,7 +18,10 @@ async function buildSearchResponse(db, query, options = {}) {
       const response = responses[index];
       const items = response.status === 'fulfilled' && Array.isArray(response.value) ? response.value : [];
       externalStatus[providers[index][0]] = items.length ? 'ok' : 'unavailable';
-      for (const item of items.slice(0, 5)) {
+      // searchBooks aggregates multiple sources. Apply the shared result limit
+      // after validation and deduplication so later book sources stay eligible.
+      for (const item of items) {
+        if (externalResults.length >= 10) break;
         if (!item || typeof item.sourceType !== 'string' || !['book', 'movie'].includes(item.kind)
           || !(typeof item.literatureTitle === 'string' || typeof item.movieTitle === 'string')) continue;
         // Do not persist the search query as evidence for the result it retrieved.

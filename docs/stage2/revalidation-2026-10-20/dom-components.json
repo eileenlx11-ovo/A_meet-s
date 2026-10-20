@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-10-20T05:34:57.045Z",
+  "scope": "In-memory Chromium DOM component tests, explicit in-process transport adapter, production query/service code, real synthetic SQLite. NO HTTP; not full Express/auth or visual layout acceptance.",
+  "runtime": {
+    "node": "v24.18.0",
+    "playwright": "1.56.1",
+    "chromium": "141.0.7390.37"
+  },
+  "implementationHashes": {
+    "js/search.js": "02a56d98717bf62b1932c40437c1796d88a392864e0e6d3c9de540f2163c0572",
+    "js/evidence-ui.js": "82c15ea11a6781f284a62b48cfa84b0b557d0c421e9c9b8f6c23806c4ac9c56a",
+    "server/services/queryEvidence.js": "3a1539978de2d015b192b65f9c4023a7993552db29fa0a166b0fc16bde140d72",
+    "server/services/searchService.js": "d11f4d8100fca8c8f28b7e9b4d6acfb7eddbc7a3acbcb6ea393251dd74fa601e",
+    "server/services/contentEvidence.js": "a3c437f11009076125c350a6c493be4fd82fd946746fa10f6129f3a39d1dbd1a",
+    "data/evidence-catalogue.json": "28977a1821c2bf050a75d00aa13dd802ed2be9ca89f70fa64475f9c6894c3132"
+  },
+  "cases": [
+    {
+      "name": "field witnesses render for the rainy-night primary hit",
+      "passed": true
+    },
+    {
+      "name": "snow/dress is partial only, with explicit missing constraints",
+      "passed": true
+    },
+    {
+      "name": "operation-intent queries show the scope explanation without colour hits",
+      "passed": true
+    },
+    {
+      "name": "located English passage and unverified Chinese quote remain distinct",
+      "passed": true
+    },
+    {
+      "name": "Hours pairing is editorial, not a direct adaptation claim",
+      "passed": true
+    },
+    {
+      "name": "untrusted witness text cannot create elements or JavaScript links",
+      "passed": true
+    },
+    {
+      "name": "a late older response cannot overwrite the latest search result",
+      "passed": true
+    },
+    {
+      "name": "empty query also invalidates an earlier pending result",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "passed": true
+}

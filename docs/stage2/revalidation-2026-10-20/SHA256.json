@@ -1,0 +1,14 @@
+{
+  "audit-strict.log": "9da4c258d104944b82f6696029c109c34fdef94c2849aea394c31af199b46c94",
+  "browser-contract.json": "9d5a0d226f2f9aa16b746342ab6f581530b99970790aa8c7d937fc5523ddc0fc",
+  "dom-components.json": "d1dbc3f8249f1e435cede3365c563d30516a6749c6f7316df269ac1f2db35646",
+  "full-app-browser-initial-failure.json": "1e5b00beccfa295b05a4fa3bffd919473f2a42fab56a68fcc4ee4ff0afb096fe",
+  "full-app-browser.json": "5c3e271cddd3432fd5a410cc1253b95b0da057778f800efa9350077c6083ef23",
+  "node-tests.tap": "712fdae8a1953bb8fde20927a454cb33a88c6327efb31ca2862f98a7f195ca8b",
+  "provider-regression-red.tap": "2a59d063b125fbf1221b107b3ead2a42fa93b6be2ddcc096df355a7b914550a1",
+  "retrieval-contract.json": "636189ce7bda9e1d63d81bd4d400fc9591596fc482ea51952ea5d8636ea5884d",
+  "retrieval-strict.log": "e3fadccb79d6aea111543c23db51f2e712a4c797dc034c70faef81a667143d42",
+  "source-audit.json": "a838b48f02ec55bc19dc40ba15938baa2c9f063400ba0c0aaad028796f8d9f52",
+  "source-manifest.json": "9e5f60cbded9383d43a44d52652120325f0e80b0ccbf035fc1ab9952def1f146",
+  "vitest.json": "1191c88acf41e59699c6ff4118eddce0eca5454a71a6ffdd0b15cca18469b954"
+}

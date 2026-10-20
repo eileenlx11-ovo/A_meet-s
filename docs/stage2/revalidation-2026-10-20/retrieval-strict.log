@@ -1,0 +1,22 @@
+
+> anchor-shadow@1.0.0 evaluate:evidence
+> node scripts/evaluate-evidence.js --strict --output ../stage2-verification/retrieval-contract.json
+
+{
+  "legacyCandidates": {
+    "pass": 36,
+    "fail": 3,
+    "review": 1
+  },
+  "primaryOnly": {
+    "pass": 33,
+    "fail": 6,
+    "review": 1
+  },
+  "includingPartial": {
+    "pass": 38,
+    "fail": 1,
+    "review": 1
+  }
+}
+Primary-only failures: 茶与蛋糕的回忆 | 我想找茶水和小蛋糕让人突然想起往事的文字 | 一个把一生献给职责却没能说出感情的英国管家 | 英国庄园里黄昏的管家 | 有没有那种走过长廊和镜子、像陷在记忆迷宫里的电影 | 想看一位艺术家离开原来的生活去热带岛屿追求理想

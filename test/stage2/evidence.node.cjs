@@ -132,6 +132,18 @@ test('external results stay separate and echoed keywords are not persisted',asyn
  assert.equal(r.results.length,0);assert.equal(r.externalResults.length,1);assert.equal(r.externalResults[0].match.type,'external_metadata');
  assert(!r.externalResults[0].keywords.includes('琥珀'));assert.equal(all(search(db,'琥珀')).length,0);
 });
+
+test('aggregated book providers retain both sources within the total external result limit', async () => {
+ const books = ['open_library', 'google_books'].flatMap(sourceType =>
+  Array.from({ length: 5 }, (_, index) => ({ sourceType, kind: 'book',
+   literatureTitle: `${sourceType} synthetic ${index}`, keywords: [] })));
+ const r = await buildSearchResponse(db, '琥珀', { externalEnabled: true,
+  searchBooks: async () => [null, books[0], ...books],
+  searchMovies: async () => [{ sourceType: 'tmdb', kind: 'movie', movieTitle: 'Synthetic extra movie' }] });
+ assert.equal(r.externalResults.length, 10);
+ assert.deepEqual(r.externalResults.map(work => work.literatureTitle), books.map(work => work.literatureTitle));
+ assert(r.externalResults.every(work => work.match.type === 'external_metadata'));
+});
 test('a provider rejection does not discard local discovery',async()=>{
  const r=await buildSearchResponse(db,'雨夜',{externalEnabled:true,searchBooks:async()=>{throw Error('synthetic provider failure');}});
  assert(r.results.some(w=>title(w)==='花样年华'));assert.equal(r.externalStatus.books,'unavailable');

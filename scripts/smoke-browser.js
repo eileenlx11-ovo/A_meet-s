@@ -118,7 +118,9 @@ async function main() {
       await page.goto(`${origin}/search.html`);
       await page.fill('#searchInput', '量子计算机超导芯片');
       await page.click('#searchButton');
-      await page.waitForFunction(() => document.getElementById('resultsContainer').textContent.includes('暂无此意象'));
+      await page.locator('#resultsContainer .empty-state').filter({
+        hasText: '当前资料中没有得到支持的匹配；这不表示所有书籍或电影中都不存在。'
+      }).waitFor();
       assert.equal(await page.locator('.result-item').count(), 0);
     });
 
