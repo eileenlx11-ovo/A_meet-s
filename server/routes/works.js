@@ -1,7 +1,7 @@
 const express = require('express');
 const { z } = require('zod');
 const { getDb } = require('../db');
-const { searchLocalWorks, getWork, insertExternalWork, getComments } = require('../services/worksRepository');
+const { analyzeSearchQuery, searchLocalWorks, getWork, insertExternalWork, getComments } = require('../services/worksRepository');
 const { searchBooks } = require('../services/bookProviders');
 const { searchMovies } = require('../services/movieProviders');
 const { validate } = require('../middleware/validate');
@@ -16,7 +16,8 @@ const commentSchema = z.object({
 
 router.get('/search', async (req, res) => {
   const query = String(req.query.q || '').trim();
-  if (!query) {
+  const analysis = analyzeSearchQuery(query);
+  if (!analysis.literalQuery) {
     res.json({ results: [], externalStatus: { books: 'skipped', movies: 'skipped' } });
     return;
   }
@@ -26,7 +27,9 @@ router.get('/search', async (req, res) => {
   const externalStatus = { books: 'skipped', movies: 'skipped' };
   const externalResults = [];
 
-  if (localResults.length < 8 && process.env.DISABLE_EXTERNAL_SEARCH !== '1') {
+  // External providers return unfiltered metadata and echo the query in keywords.
+  // Keep explicit exclusions local until those providers support verified filters.
+  if (localResults.length < 8 && analysis.terms.length > 0 && !analysis.excludedTerms.length && process.env.DISABLE_EXTERNAL_SEARCH !== '1') {
     const [books, movies] = await Promise.all([searchBooks(query), searchMovies(query)]);
     externalStatus.books = books.length > 0 ? 'ok' : 'unavailable';
     externalStatus.movies = movies.length > 0 ? 'ok' : 'unavailable';

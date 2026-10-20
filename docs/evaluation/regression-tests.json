@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-19T13:18:50.522000Z",
+  "status": "passed",
+  "command": "npm test -- --reporter=default --reporter=json --outputFile=/tmp/ameets-vitest-results.json",
+  "runtime": {
+    "node": "v24.19.0",
+    "vitest": "1.6.1"
+  },
+  "scope": "Local HTTP and logic regression tests with in-memory or purpose-created synthetic databases. External search providers are stubbed when their invocation is tested. No deployed environment or paid service is validated.",
+  "sourceManifest": "source-manifest.json",
+  "provenance": {
+    "fullReportFilename": "ameets-vitest-results.json",
+    "fullReportSha256": "2fbdae9c46da5928aa1db0f5b1d767955a7507621da9202e5caba7b55c31493a"
+  },
+  "summary": {
+    "numTotalTestSuites": 5,
+    "numPassedTestSuites": 5,
+    "numFailedTestSuites": 0,
+    "numTotalTests": 39,
+    "numPassedTests": 39,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "testFiles": [
+    {
+      "path": "test/api.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": " searches seeded works",
+          "status": "passed"
+        },
+        {
+          "name": " registers and returns current user",
+          "status": "passed"
+        },
+        {
+          "name": " requires login to comment",
+          "status": "passed"
+        },
+        {
+          "name": " prevents sharing before friendship is accepted",
+          "status": "passed"
+        },
+        {
+          "name": " reports image generation unavailable when provider is missing",
+          "status": "passed"
+        },
+        {
+          "name": " creates generated image records with a fake provider",
+          "status": "passed"
+        },
+        {
+          "name": " updates profile and lists user comments",
+          "status": "passed"
+        },
+        {
+          "name": " creates community and posts discussion",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "path": "test/auth-form.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": " initial login excludes the empty name from validation and sends credentials",
+          "status": "passed"
+        },
+        {
+          "name": " register mode requires a name and returning to login excludes it again",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "path": "test/backend-regressions.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": " serves the existing pages and assets without exposing a real synthetic database or backend files",
+          "status": "passed"
+        },
+        {
+          "name": " preserves the signed-in display name and public ID when loading and saving a profile",
+          "status": "passed"
+        },
+        {
+          "name": " keeps community identities public while retaining the account owner email in auth/me",
+          "status": "passed"
+        },
+        {
+          "name": " uses public identities in friend requests, friend lists, and received shares",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "path": "test/retrieval.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": " ranks a complete literatureTitle ahead of a newer thematic keyword match",
+          "status": "passed"
+        },
+        {
+          "name": " ranks a complete movieTitle ahead of a newer thematic keyword match",
+          "status": "passed"
+        },
+        {
+          "name": " ranks a complete literatureAuthor ahead of a newer thematic keyword match",
+          "status": "passed"
+        },
+        {
+          "name": " ranks a complete movieDirector ahead of a newer thematic keyword match",
+          "status": "passed"
+        },
+        {
+          "name": " retains an explicit full-title lookup even when the title is a grammatical word",
+          "status": "passed"
+        },
+        {
+          "name": " retrieves an unquoted literatureTitle that begins with an exclusion command",
+          "status": "passed"
+        },
+        {
+          "name": " retrieves an unquoted movieTitle that begins with an exclusion command",
+          "status": "passed"
+        },
+        {
+          "name": " keeps a pure exclusion empty when no complete metadata field matches it",
+          "status": "passed"
+        },
+        {
+          "name": " preserves keyword entries and gives a complete keyword priority over a substring",
+          "status": "passed"
+        },
+        {
+          "name": " does not create a word by joining separate keyword entries",
+          "status": "passed"
+        },
+        {
+          "name": " finds literal words in a sentence longer than twelve characters",
+          "status": "passed"
+        },
+        {
+          "name": " does not turn characters inside unrelated technical or food words into matches",
+          "status": "passed"
+        },
+        {
+          "name": " requires direct evidence before associated moods can influence ranking",
+          "status": "passed"
+        },
+        {
+          "name": " returns no works for a query without searchable text: \"\"",
+          "status": "passed"
+        },
+        {
+          "name": " returns no works for a query without searchable text: \"   \"",
+          "status": "passed"
+        },
+        {
+          "name": " returns no works for a query without searchable text: \"！？…——（）\"",
+          "status": "passed"
+        },
+        {
+          "name": " returns no works for a query without searchable text: \"\\t$%🪁+ \"",
+          "status": "passed"
+        },
+        {
+          "name": " retrieves an older relevant work after more than five hundred newer records",
+          "status": "passed"
+        },
+        {
+          "name": " supports explicit exclusion clauses without adding their words as positive evidence",
+          "status": "passed"
+        },
+        {
+          "name": " keeps descriptive negative phrases as positive search text",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "path": "test/search-api.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": " punctuation-only input stays empty without calling external providers",
+          "status": "passed"
+        },
+        {
+          "name": " explicit exclusions cannot be undone by unfiltered external suggestions",
+          "status": "passed"
+        },
+        {
+          "name": " a title beginning with an exclusion command still supports an exact local lookup",
+          "status": "passed"
+        },
+        {
+          "name": " an exclusion without positive evidence or an exact title stays empty and local",
+          "status": "passed"
+        },
+        {
+          "name": " ordinary positive searches still have the external metadata fallback",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

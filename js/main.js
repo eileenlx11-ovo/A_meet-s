@@ -9,22 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('auth-password');
     let isLogin = true;
 
+    function syncAuthMode() {
+        authTitle.innerText = isLogin ? '私人放映室' : '访客名册登记';
+        submitBtn.innerText = isLogin ? '落 座' : '签 署';
+        toggleAuthBtn.innerText = isLogin ? '获取入场券' : '返回放映室';
+        nameInput.parentElement.hidden = isLogin;
+        nameInput.disabled = isLogin;
+        nameInput.required = !isLogin;
+    }
+
     if (toggleAuthBtn) {
         toggleAuthBtn.addEventListener('click', (e) => {
             e.preventDefault();
             isLogin = !isLogin;
-            authTitle.innerText = isLogin ? '私人放映室' : '访客名册登记';
-            submitBtn.innerText = isLogin ? '落 座' : '签 署';
-            toggleAuthBtn.innerText = isLogin ? '获取入场券' : '返回放映室';
-            nameInput.parentElement.style.display = isLogin ? 'none' : 'block';
+            syncAuthMode();
         });
     }
 
-    if (nameInput) {
-        nameInput.parentElement.style.display = 'none';
-    }
-
     if (authForm) {
+        syncAuthMode();
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             notice.textContent = '';

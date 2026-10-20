@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "artifactFormat": "compact-retrieval-diagnostic.v1",
+  "formatNotes": [
+    "Lossless retention of the captured diagnostic labels, verdicts, counts, expected ranks, and ordered work-title pairs; not the complete search payload.",
+    "Repeated quotation/description text, keyword lists, expanded terms, authors, directors, video counts, and database row IDs are omitted. The frozen fixture retains full annotation rationales.",
+    "A missing k field follows the evaluator default: top1 uses 1; other top-k checks use 3 unless the fixture supplies k. Empty checks use the complete result set; explicit exclusions also apply to the complete returned set.",
+    "source.gitHead records the checked-out commit and can predate uncommitted fixes. source.worksRepositorySha256 identifies the actual retrieval source evaluated."
+  ],
+  "run": "supplement",
+  "capturedAt": "2026-10-19T13:19:02.571Z",
+  "purpose": "Supplementary, hand-authored engineering diagnostic over the same small curated corpus; not a statistically independent holdout set or a representative retrieval benchmark.",
+  "annotationMethod": "These ten new queries and relevance expectations were authored from the seed corpus without inspecting the revised retrieval implementation or its outputs. They use different wording from the original thirty cases but share the same sixteen-record corpus and annotator. Work titles identify stored records, not independently verified quotations, footage, or adaptation relationships.",
+  "limitations": [
+    "10 deliberately chosen diagnostic queries over 16 hand-curated records; no random sampling, independent annotators, or real-user study.",
+    "Exact metadata checks, subjective imagery checks, and negation/multi-condition capability probes are reported separately.",
+    "Local repository only. No HTTP, browser, external-provider availability, relevance of new external data, or paid API calls are evaluated.",
+    "A work-level hit cannot verify an actual film frame, audiovisual content, a clip timestamp, quotation provenance, or an adaptation relationship.",
+    "Exclusion checks use textual seed evidence. Unknown visual content cannot establish the absence of a feature.",
+    "No overall accuracy, semantic quality, latency benchmark, or cross-modal model comparison is claimed."
+  ],
+  "runtime": {
+    "node": "v24.19.0",
+    "sqliteDatabase": ":memory:"
+  },
+  "source": {
+    "gitHead": "dcde811a7df28d48bcc22ee1e51e1c6a04c62938",
+    "worksRepositorySha256": "4b673ae61dd0f7c4ded639ab2566ae909fa27750502a0b33d0be75b6340d159f",
+    "fixturePath": "test/fixtures/retrieval-holdout-cases.json",
+    "fixtureSha256": "306cc8290c05b4b10e243bc072bac4b1dce1a12643fcb2e8b6522b9f6e10c580"
+  },
+  "corpus": {
+    "path": "data/seed-works.json",
+    "recordCount": 16,
+    "sha256": "84339990829337d5f7833f82f22748c8c99452a4727984812c5f699fb8315839",
+    "recordsWithVideoLinks": 6,
+    "videoLinks": 6
+  },
+  "provenance": {
+    "fullReportFilename": "ameets-evaluation-supplement.json",
+    "fullReportSha256": "1f7ce87aefa33d41c9e618f8afdf8cf963b9292919b7f9d14009922cc0a50fce",
+    "regeneratedWith": "node scripts/evaluate-retrieval.js --fixtures test/fixtures/retrieval-holdout-cases.json --output /tmp/ameets-retrieval-full.json",
+    "regenerationNotes": "Use the retrieval source, seed, and fixture matching the recorded fingerprints. The script generates the complete report; a new execution has a new capturedAt timestamp."
+  },
+  "comparisonAudit": {
+    "originalThirtyCaseDefinitionsIdenticalBeforeAfter": true,
+    "originalThirtyFixtureSha256": "a48d7a3ea9060bba929972058340e755931582ee2d0311c42e39a8798996a27b",
+    "seedSha256IdenticalAcrossAllRuns": "84339990829337d5f7833f82f22748c8c99452a4727984812c5f699fb8315839",
+    "afterAndSupplementSourceSha256Identical": "4b673ae61dd0f7c4ded639ab2566ae909fa27750502a0b33d0be75b6340d159f",
+    "supplementaryFixtureFrozenSha256": "306cc8290c05b4b10e243bc072bac4b1dce1a12643fcb2e8b6522b9f6e10c580",
+    "supplementaryResultsUsedForParameterTuning": false,
+    "supplementaryRoleNotes": "Workflow record: the ten additional cases were fixed without inspecting revised source or outputs. Their outcomes were used for supplementary diagnosis and did not select parameters or drive rule changes. An independently found exact-metadata regression was repaired before the final unified runs. The cases share the small corpus and annotator with the original set, so they are not statistically independent."
+  },
+  "summary": {
+    "cases": 10,
+    "passed": 8,
+    "failed": 2,
+    "reviewOnly": 0,
+    "byCategory": {
+      "known_item": {
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "short_imagery": {
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "natural_language": {
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "reviewOnly": 0
+      },
+      "no_match": {
+        "cases": 2,
+        "passed": 0,
+        "failed": 2,
+        "reviewOnly": 0
+      },
+      "constrained": {
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "reviewOnly": 0
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "supplement-exact-title-anna",
+      "query": "安娜·卡列尼娜",
+      "category": "known_item",
+      "check": "top1",
+      "expectedTitles": [
+        "安娜·卡列尼娜"
+      ],
+      "verdict": "pass",
+      "expectedRanks": {
+        "安娜·卡列尼娜": 1
+      },
+      "resultCount": 1,
+      "matchedInTopK": [
+        "安娜·卡列尼娜"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "安娜·卡列尼娜",
+          "movieTitle": "安娜·卡列尼娜"
+        }
+      ]
+    },
+    {
+      "id": "supplement-exact-author-kundera",
+      "query": "米兰·昆德拉",
+      "category": "known_item",
+      "check": "top1",
+      "expectedTitles": [
+        "不能承受的生命之轻"
+      ],
+      "verdict": "pass",
+      "expectedRanks": {
+        "不能承受的生命之轻": 1
+      },
+      "resultCount": 1,
+      "matchedInTopK": [
+        "不能承受的生命之轻"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "不能承受的生命之轻",
+          "movieTitle": "布拉格之恋"
+        }
+      ]
+    },
+    {
+      "id": "supplement-exact-movie-grand-budapest",
+      "query": "布达佩斯大饭店",
+      "category": "known_item",
+      "check": "top1",
+      "expectedTitles": [
+        "昨日的世界"
+      ],
+      "verdict": "pass",
+      "expectedRanks": {
+        "昨日的世界": 1
+      },
+      "resultCount": 1,
+      "matchedInTopK": [
+        "昨日的世界"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-imagery-red-sweater-sky",
+      "query": "红毛衣 阴郁天空",
+      "category": "short_imagery",
+      "check": "topk_any",
+      "expectedTitles": [
+        "挪威的森林"
+      ],
+      "k": 3,
+      "verdict": "pass",
+      "expectedRanks": {
+        "挪威的森林": 1
+      },
+      "resultCount": 2,
+      "matchedInTopK": [
+        "挪威的森林"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "挪威的森林",
+          "movieTitle": "挪威的森林"
+        },
+        {
+          "rank": 2,
+          "literatureTitle": "海边的曼彻斯特",
+          "movieTitle": "海边的曼彻斯特"
+        }
+      ]
+    },
+    {
+      "id": "supplement-imagery-paper-animation-stars",
+      "query": "纸艺动画和星空",
+      "category": "short_imagery",
+      "check": "topk_any",
+      "expectedTitles": [
+        "小王子"
+      ],
+      "k": 3,
+      "verdict": "pass",
+      "expectedRanks": {
+        "小王子": 1
+      },
+      "resultCount": 1,
+      "matchedInTopK": [
+        "小王子"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "小王子",
+          "movieTitle": "小王子"
+        }
+      ]
+    },
+    {
+      "id": "supplement-natural-corridor-mirror-memory",
+      "query": "有没有那种走过长廊和镜子、像陷在记忆迷宫里的电影",
+      "category": "natural_language",
+      "check": "topk_any",
+      "expectedTitles": [
+        "追忆似水年华"
+      ],
+      "k": 3,
+      "verdict": "pass",
+      "expectedRanks": {
+        "追忆似水年华": 1
+      },
+      "resultCount": 2,
+      "matchedInTopK": [
+        "追忆似水年华"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "追忆似水年华",
+          "movieTitle": "追忆似水年华"
+        },
+        {
+          "rank": 2,
+          "literatureTitle": "挪威的森林",
+          "movieTitle": "挪威的森林"
+        }
+      ]
+    },
+    {
+      "id": "supplement-natural-artist-island-ideal",
+      "query": "想看一位艺术家离开原来的生活去热带岛屿追求理想",
+      "category": "natural_language",
+      "check": "topk_any",
+      "expectedTitles": [
+        "月亮与六便士"
+      ],
+      "k": 3,
+      "verdict": "pass",
+      "expectedRanks": {
+        "月亮与六便士": 1
+      },
+      "resultCount": 3,
+      "matchedInTopK": [
+        "月亮与六便士"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "月亮与六便士",
+          "movieTitle": "月亮和六便士"
+        },
+        {
+          "rank": 2,
+          "literatureTitle": "霍乱时期的爱情",
+          "movieTitle": "霍乱时期的爱情"
+        },
+        {
+          "rank": 3,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-no-match-green-rangefinder",
+      "query": "绿色激光测距仪怎么校准",
+      "category": "no_match",
+      "check": "empty",
+      "expectedTitles": [],
+      "verdict": "fail",
+      "expectedRanks": {},
+      "resultCount": 1,
+      "matchedInTopK": [],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "赎罪",
+          "movieTitle": "赎罪"
+        }
+      ]
+    },
+    {
+      "id": "supplement-no-match-pink-headphones",
+      "query": "粉色无线耳机怎么连接电脑",
+      "category": "no_match",
+      "check": "empty",
+      "expectedTitles": [],
+      "verdict": "fail",
+      "expectedRanks": {},
+      "resultCount": 1,
+      "matchedInTopK": [],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "昨日的世界",
+          "movieTitle": "布达佩斯大饭店"
+        }
+      ]
+    },
+    {
+      "id": "supplement-constraint-dawn-without-dusk-regret",
+      "query": "找清晨薄雾里的告白，不要黄昏庄园里的遗憾",
+      "category": "constrained",
+      "check": "topk_any_without_forbidden",
+      "expectedTitles": [
+        "傲慢与偏见"
+      ],
+      "forbiddenTitles": [
+        "长日将尽"
+      ],
+      "k": 3,
+      "verdict": "pass",
+      "expectedRanks": {
+        "傲慢与偏见": 1
+      },
+      "resultCount": 1,
+      "matchedInTopK": [
+        "傲慢与偏见"
+      ],
+      "missingFromTopK": [],
+      "returnedForbiddenTitles": [],
+      "results": [
+        {
+          "rank": 1,
+          "literatureTitle": "傲慢与偏见",
+          "movieTitle": "傲慢与偏见"
+        }
+      ]
+    }
+  ]
+}

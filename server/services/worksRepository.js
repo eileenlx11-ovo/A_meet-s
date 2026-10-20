@@ -1,6 +1,8 @@
 const { safeVideo } = require('./videoProviders');
 
-const synonymGroups = [
+// These are loose associations, not interchangeable meanings. They may only
+// reorder records that already have literal evidence for the user's query.
+const relatedTermGroups = [
   ['雨', '雨夜', '下雨', '雨天', '潮湿', '路灯', '巷弄', '伞'],
   ['雪', '冬天', '冬日', '寒冷', '白色', '山', '离别'],
   ['夏日', '夏天', '盛夏', '阳光', '炎热', '庄园', '绿裙子'],
@@ -17,6 +19,18 @@ const synonymGroups = [
   ['月亮', '月光', '夜', '梦', '诗意', '乡愁'],
   ['花', '玫瑰', '花园', '爱情', '温柔', '春天']
 ];
+
+const wordSegmenter = new Intl.Segmenter('zh', { granularity: 'word' });
+const stopWords = new Set([
+  '的', '了', '着', '过', '地', '得', '在', '有', '是', '和', '与', '及', '或', '也', '都',
+  '但', '但是', '不过', '而', '却', '只', '把', '被', '让', '对', '里', '上', '中',
+  '我', '你', '他', '她', '它', '我们', '你们', '他们', '这', '那', '这个', '那个',
+  '这些', '那些', '一个', '一些', '一部', '一本', '一段', '一下', '一帧',
+  '想', '我想', '想要', '想看', '找', '寻找', '查找', '搜索', '检索', '看看',
+  '可以', '请', '帮', '帮我', '有没有', '关于', '以及', '并且', '没有',
+  '作品', '内容', '画面', '镜头', '片段', '场景', '电影', '书籍', '文字',
+  'a', 'an', 'the', 'and', 'or', 'of', 'in', 'on', 'with', 'find', 'show', 'me'
+]);
 
 function mapWork(row) {
   if (!row) return null;
@@ -44,14 +58,12 @@ function getVideos(db, workId) {
   return db.prepare('SELECT * FROM videos WHERE work_id = ? ORDER BY id').all(workId).map(safeVideo).filter(Boolean);
 }
 
-function getKeywordsForWorks(db, workIds) {
-  if (!workIds.length) return new Map();
+function getKeywordsForWorks(db) {
   const rows = db.prepare(`
     SELECT work_id, keyword
     FROM work_keywords
-    WHERE work_id IN (${placeholders(workIds)})
     ORDER BY keyword
-  `).all(...workIds);
+  `).all();
   return groupRows(rows, 'work_id', 'keyword');
 }
 
@@ -95,19 +107,22 @@ function hydrateWork(db, row) {
 }
 
 function searchLocalWorks(db, query) {
-  const terms = expandSearchTerms(query);
-  const rows = db.prepare('SELECT * FROM works ORDER BY id DESC LIMIT 500').all();
-  const workIds = rows.map((row) => row.id);
-  const keywordsByWork = getKeywordsForWorks(db, workIds);
+  const analysis = analyzeSearchQuery(query);
+  if (!analysis.literalQuery) return [];
+
+  // Rank the complete collection before limiting the response. Filtering the
+  // newest 500 records first silently hid older works as the collection grew.
+  const rows = db.prepare('SELECT * FROM works ORDER BY id DESC').all();
+  const keywordsByWork = getKeywordsForWorks(db);
 
   const scored = rows
     .map((row) => {
       const work = mapWork(row);
       work.keywords = keywordsByWork.get(work.id) || [];
-      return { work, score: scoreWork(work, terms) };
+      return { work, ...scoreWork(work, analysis) };
     })
     .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score || b.work.id - a.work.id)
+    .sort((a, b) => b.metadataRank - a.metadataRank || b.score - a.score || b.work.id - a.work.id)
     .slice(0, 30);
 
   const videosByWork = getVideosForWorks(db, scored.map((item) => item.work.id));
@@ -118,52 +133,117 @@ function searchLocalWorks(db, query) {
 }
 
 function expandSearchTerms(query) {
-  const normalized = normalize(query);
-  const terms = new Set([normalized]);
-
-  for (const part of String(query).split(/[\s,，。；;、]+/)) {
-    const token = normalize(part);
-    if (token) terms.add(token);
-  }
-
-  if (/^[一-龥]{2,12}$/.test(normalized)) {
-    for (let index = 0; index < normalized.length; index += 1) {
-      terms.add(normalized[index]);
-      if (index < normalized.length - 1) terms.add(normalized.slice(index, index + 2));
-    }
-  }
-
-  for (const group of synonymGroups) {
-    if (group.some((word) => normalized.includes(normalize(word)) || normalize(word).includes(normalized))) {
-      group.forEach((word) => terms.add(normalize(word)));
-    }
-  }
-
-  return [...terms].filter(Boolean).sort((a, b) => b.length - a.length);
+  return analyzeSearchQuery(query).terms;
 }
 
-function scoreWork(work, terms) {
-  const keywordText = normalize((work.keywords || []).join(' '));
-  const titleText = normalize([work.literatureTitle, work.literatureAuthor, work.movieTitle, work.movieDirector].filter(Boolean).join(' '));
-  const bodyText = normalize([work.quote, work.description].filter(Boolean).join(' '));
-  let score = 0;
-
-  for (const term of terms) {
-    if (!term) continue;
-    if (keywordText.split(' ').includes(term)) score += 30;
-    else if (keywordText.includes(term)) score += 18;
-
-    if (titleText.includes(term)) score += 16;
-    if (bodyText.includes(term)) score += term.length > 1 ? 8 : 3;
+function analyzeSearchQuery(query) {
+  const exclusions = [];
+  // Only explicit command clauses are exclusions. Descriptions such as
+  // “没有寄出的信” and “没有说出口” retain their ordinary search meaning.
+  const positiveQuery = String(query || '').replace(
+    /(?:^|[,，;；。!?！？\n]|但是|不过|但)\s*(?:不要|排除)\s*([^,，;；。!?！？\n]+)/gu,
+    (_match, clause) => {
+      exclusions.push(clause);
+      return ' ';
+    }
+  ).trim();
+  const terms = extractLiteralTerms(positiveQuery);
+  const relatedTerms = new Set();
+  for (const group of relatedTermGroups) {
+    if (group.some((word) => terms.includes(normalize(word)))) {
+      for (const word of group) {
+        const term = normalize(word);
+        if (!terms.includes(term)) relatedTerms.add(term);
+      }
+    }
   }
 
-  return score;
+  return {
+    literalQuery: normalize(query),
+    positiveQuery,
+    terms,
+    excludedTerms: [...new Set(exclusions.flatMap(extractLiteralTerms))],
+    relatedTerms: [...relatedTerms]
+  };
+}
+
+function extractLiteralTerms(value) {
+  const text = String(value || '').normalize('NFKC').toLowerCase();
+  const whole = normalize(text);
+  if (!whole) return [];
+
+  // A complete query can itself be a title (including a word such as “我们”).
+  // Stop words are removed from sentence fragments, not from that lookup.
+  const terms = new Set([whole]);
+  const words = [...wordSegmenter.segment(text)].filter((part) => part.isWordLike);
+  for (let index = 0; index < words.length; index += 1) {
+    const part = words[index];
+    const term = normalize(part.segment);
+    if (!term || stopWords.has(term)) continue;
+
+    // ICU can split an unfamiliar compound into single characters. Do not
+    // search each fragment; keep a single character only at an explicit word
+    // boundary or next to a grammatical word, and score it conservatively.
+    const before = text[part.index - 1] || '';
+    const after = text[part.index + part.segment.length] || '';
+    const separated = /[\s\p{P}\p{S}]/u.test(before) || /[\s\p{P}\p{S}]/u.test(after);
+    const grammaticalBoundary = stopWords.has(normalize(words[index - 1]?.segment))
+      || stopWords.has(normalize(words[index + 1]?.segment));
+    if (term.length > 1 || whole === term || separated || grammaticalBoundary) terms.add(term);
+  }
+  return [...terms].sort((a, b) => b.length - a.length);
+}
+
+function scoreWork(work, analysis) {
+  const keywords = [...new Set((work.keywords || []).map(normalize).filter(Boolean))];
+  const metadata = [work.literatureTitle, work.literatureAuthor, work.movieTitle, work.movieDirector].map(normalize).filter(Boolean);
+  // A full title or creator name is an explicit lookup even when its wording
+  // resembles an exclusion command. This does not turn a pure exclusion into
+  // a positive keyword search for the rest of the collection.
+  if (metadata.includes(analysis.literalQuery)) return { metadataRank: 3, score: 32 };
+  if (!analysis.terms.length) return { metadataRank: 0, score: 0 };
+
+  const body = [work.quote, work.description].map(normalize).filter(Boolean);
+  const fields = [...keywords, ...metadata, ...body];
+  if (analysis.excludedTerms.some((term) => fields.some((field) => field.includes(term))
+    || keywords.some((keyword) => keyword.length > 1 && term.includes(keyword)))) {
+    return { metadataRank: 0, score: 0 };
+  }
+
+  const whole = normalize(analysis.positiveQuery);
+  const metadataRank = metadata.includes(whole) ? 2
+    : Number(metadata.some((field) => field.length > 1 && whole.includes(field)));
+  const keywordScores = new Map();
+  let score = metadataRank ? 32 : 0;
+  for (const term of analysis.terms) {
+    const allowSubstring = term.length > 1 || whole.length === 1;
+    for (const keyword of keywords) {
+      const matchScore = keyword === term ? 30 : allowSubstring && keyword.includes(term) ? 18 : 0;
+      keywordScores.set(keyword, Math.max(keywordScores.get(keyword) || 0, matchScore));
+    }
+    if (allowSubstring && metadata.some((field) => field.includes(term))) score += 16;
+    if (allowSubstring && body.some((field) => field.includes(term))) score += 8;
+  }
+
+  // Existing multi-character keywords also form a small corpus vocabulary.
+  // This recovers literal compounds ICU split differently, without inventing
+  // character n-grams or bridging two separate keyword entries.
+  for (const keyword of keywords) {
+    if (keyword.length > 1 && whole.includes(keyword)) keywordScores.set(keyword, 30);
+  }
+  score += [...keywordScores.values()].reduce((sum, value) => sum + value, 0);
+  if (!score) return { metadataRank: 0, score: 0 };
+
+  // At most three tie-breaking points: less than one literal body match.
+  score += Math.min(3, analysis.relatedTerms.filter((term) => keywords.includes(term)).length);
+  return { metadataRank, score };
 }
 
 function normalize(value) {
   return String(value || '')
+    .normalize('NFKC')
     .toLowerCase()
-    .replace(/[\s\-—_《》“”"'‘’.,，。:：;；!?！？()（）\[\]【】]/g, '');
+    .replace(/[^\p{L}\p{N}]/gu, '');
 }
 
 function getWork(db, id) {
@@ -225,4 +305,4 @@ function getComments(db, workId) {
   }));
 }
 
-module.exports = { searchLocalWorks, getWork, insertExternalWork, getComments, hydrateWork, expandSearchTerms };
+module.exports = { searchLocalWorks, getWork, insertExternalWork, getComments, hydrateWork, expandSearchTerms, analyzeSearchQuery };

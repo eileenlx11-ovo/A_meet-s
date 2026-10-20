@@ -1,5 +1,7 @@
 module.exports = {
   test: {
-    globals: true
+    globals: true,
+    maxWorkers: 1,
+    minWorkers: 1
   }
 };

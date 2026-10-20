@@ -1,6 +1,6 @@
 const express = require('express');
 const { z } = require('zod');
-const { getDb, serializeUser } = require('../db');
+const { getDb, serializePublicUser } = require('../db');
 const { requireAuth } = require('../middleware/auth');
 const { validate } = require('../middleware/validate');
 const { writeLimiter } = require('../middleware/rateLimit');
@@ -20,7 +20,7 @@ const postSchema = z.object({
 router.get('/communities', (_req, res) => {
   const db = getDb();
   const communities = db.prepare(`
-    SELECT c.id, c.name, c.description, c.created_at, u.id AS user_id, u.public_id, u.display_name, u.email,
+    SELECT c.id, c.name, c.description, c.created_at, u.id AS user_id, u.public_id, u.display_name,
       COUNT(DISTINCT m.user_id) AS member_count,
       COUNT(DISTINCT p.id) AS post_count
     FROM communities c
@@ -95,7 +95,7 @@ router.post('/communities/:id/posts', requireAuth, writeLimiter, validate(postSc
 
 function getCommunity(db, id) {
   const row = db.prepare(`
-    SELECT c.id, c.name, c.description, c.created_at, u.id AS user_id, u.public_id, u.display_name, u.email,
+    SELECT c.id, c.name, c.description, c.created_at, u.id AS user_id, u.public_id, u.display_name,
       COUNT(DISTINCT m.user_id) AS member_count,
       COUNT(DISTINCT p.id) AS post_count
     FROM communities c
@@ -110,7 +110,7 @@ function getCommunity(db, id) {
 
 function getCommunityPosts(db, communityId) {
   return db.prepare(`
-    SELECT p.id, p.title, p.body, p.created_at, u.id AS user_id, u.public_id, u.display_name, u.email
+    SELECT p.id, p.title, p.body, p.created_at, u.id AS user_id, u.public_id, u.display_name
     FROM community_posts p
     JOIN users u ON u.id = p.user_id
     WHERE p.community_id = ?
@@ -127,7 +127,7 @@ function mapCommunity(row) {
     createdAt: row.created_at,
     memberCount: row.member_count,
     postCount: row.post_count,
-    creator: serializeUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name, email: row.email })
+    creator: serializePublicUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name })
   };
 }
 
@@ -137,7 +137,7 @@ function mapPost(row) {
     title: row.title,
     body: row.body,
     createdAt: row.created_at,
-    author: serializeUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name, email: row.email })
+    author: serializePublicUser({ id: row.user_id, public_id: row.public_id, display_name: row.display_name })
   };
 }
 

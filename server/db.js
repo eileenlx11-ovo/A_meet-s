@@ -212,12 +212,20 @@ function createPublicId() {
   return `AS-${crypto.randomBytes(4).toString('hex').toUpperCase()}`;
 }
 
-function serializeUser(user) {
+function serializePublicUser(user) {
   if (!user) return null;
   return {
     id: user.id,
     publicId: user.public_id,
-    displayName: user.display_name,
+    displayName: user.display_name
+  };
+}
+
+// Only authentication and the account owner's own profile may include their email.
+function serializePrivateUser(user) {
+  if (!user) return null;
+  return {
+    ...serializePublicUser(user),
     email: user.email
   };
 }
@@ -229,4 +237,12 @@ function closeDb() {
   }
 }
 
-module.exports = { getDb, createPublicId, serializeUser, closeDb };
+module.exports = {
+  getDb,
+  createPublicId,
+  serializePublicUser,
+  serializePrivateUser,
+  // Preserve the existing authentication imports; public responses use serializePublicUser.
+  serializeUser: serializePrivateUser,
+  closeDb
+};

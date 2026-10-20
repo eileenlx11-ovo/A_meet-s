@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-19T13:19:00.414Z",
+  "status": "passed",
+  "node": "v24.19.0",
+  "browser": "141.0.7390.37",
+  "scope": "Local app, in-memory synthetic database, external search and image generation disabled, external browser requests blocked.",
+  "results": [
+    {
+      "name": "login with an empty, disabled name reaches the search page",
+      "status": "passed"
+    },
+    {
+      "name": "profile identity and saved biography render correctly",
+      "status": "passed"
+    },
+    {
+      "name": "rainy-night search opens a work and saves a comment",
+      "status": "passed"
+    },
+    {
+      "name": "unconfigured image generation is clearly disabled",
+      "status": "passed"
+    },
+    {
+      "name": "a query without corpus evidence shows an empty result state",
+      "status": "passed"
+    },
+    {
+      "name": "registration requires a name through native browser validation",
+      "status": "passed"
+    },
+    {
+      "name": "returning from registration to login accepts an empty name",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "sourceManifest": "source-manifest.json",
+  "provenance": {
+    "fullReportFilename": "ameets-browser-results.json",
+    "fullReportSha256": "e34c2b73742b0ab7ce8f823075eac23ab318e050cf2904c2a1cd55e4cb416f08"
+  }
+}
